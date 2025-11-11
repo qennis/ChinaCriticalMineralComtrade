@@ -11,6 +11,8 @@ lint:
 	flake8 src tests scripts
 
 fmt:
+	black src tests scripts
+	isort src tests scripts
 	black code
 	isort code
 
