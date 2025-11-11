@@ -20,8 +20,8 @@ jobs:
           pip install pandas numpy matplotlib statsmodels linearmodels pycountry plotnine pyarrow pytest black flake8 isort pre-commit
       - name: Lint
         run: |
-          black --check code
-          isort --check-only code
-          flake8 code
+          black --check src tests
+          isort --check-only src tests
+          flake8 src tests
       - name: Tests
         run: pytest -q
