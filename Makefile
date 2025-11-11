@@ -11,8 +11,8 @@ lint:
 	flake8 src tests scripts
 
 fmt:
-	black code
-	isort code
+	black src tests scripts
+	isort src tests scripts
 
 test:
 	PYTHONPATH=src pytest -q
