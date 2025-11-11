@@ -6,9 +6,9 @@ init:
 	pre-commit install
 
 lint:
-	black --check src tests
-	isort --check-only src tests
-	flake8 src tests
+	black --check src tests scripts
+	isort --check-only src tests scripts
+	flake8 src tests scripts
 
 fmt:
 	black code
