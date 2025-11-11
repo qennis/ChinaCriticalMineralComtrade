@@ -1,0 +1,12 @@
+name: Bug report
+description: File a bug
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Tell us what you saw
+  - type: textarea
+    attributes:
+      label: Repro steps

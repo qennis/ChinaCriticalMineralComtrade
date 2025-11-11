@@ -1,0 +1,21 @@
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.ipynb_checkpoints/
+
+# Data and outputs (keep placeholders)
+data_raw/
+data_work/
+outputs/
+
+# Logs / caches
+*.log
+.cache/
