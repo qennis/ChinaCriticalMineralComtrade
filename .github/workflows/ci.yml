@@ -24,4 +24,4 @@ jobs:
           isort --check-only src tests
           flake8 src tests
       - name: Tests
-        run: pytest -q
+        run: PYTHONPATH=src pytest -q

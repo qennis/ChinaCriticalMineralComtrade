@@ -15,7 +15,7 @@ fmt:
 	isort code
 
 test:
-	pytest -q
+	PYTHONPATH=src pytest -q
 
 clean:
 	rm -rf data_work/* outputs/* figures/* __pycache__ */__pycache__
