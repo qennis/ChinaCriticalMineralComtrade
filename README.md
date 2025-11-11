@@ -39,3 +39,15 @@ git lfs install
 git lfs track "*.parquet"
 git add .gitattributes
 ```
+
+
+### Comtrade pull (data/v1)
+
+1) `export COMTRADE_API_KEY=...`
+2) Example:
+```bash
+PYTHONPATH=src ./scripts/pull_comtrade.py \
+  --type C --freq M --class HS \
+  --period 202401,202402,202403 \
+  --reporter 156 --partner 0 \
+  --flow X --cmd TOTAL
