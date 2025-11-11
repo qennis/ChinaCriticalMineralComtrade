@@ -6,16 +6,16 @@ init:
 	pre-commit install
 
 lint:
-	black --check code
-	isort --check-only code
-	flake8 code
+	black --check src tests scripts
+	isort --check-only src tests scripts
+	flake8 src tests scripts
 
 fmt:
 	black code
 	isort code
 
 test:
-	pytest -q
+	PYTHONPATH=src pytest -q
 
 clean:
 	rm -rf data_work/* outputs/* figures/* __pycache__ */__pycache__

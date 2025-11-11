@@ -18,3 +18,4 @@ dependencies:
       - flake8
       - isort
       - pre-commit
+      - requests
