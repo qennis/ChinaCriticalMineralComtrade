@@ -51,3 +51,6 @@ PYTHONPATH=src ./scripts/pull_comtrade.py \
   --period 202401,202402,202403 \
   --reporter 156 --partner 0 \
   --flow X --cmd TOTAL
+
+
+![CI](https://github.com/qennis/china-ir-paper/actions/workflows/ci.yml/badge.svg)

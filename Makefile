@@ -21,3 +21,8 @@ clean:
 	rm -rf data_work/* outputs/* figures/* __pycache__ */__pycache__
 pull:
 	PYTHONPATH=src ./scripts/pull_comtrade.py --type C --freq M --class HS --period 202401,202402 --reporter 156 --partner 0 --flow X --cmd TOTAL
+
+figures:
+	PYTHONPATH=src ./scripts/make_figures.py
+
+ci_figures: etl_annual etl_monthly figures

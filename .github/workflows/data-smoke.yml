@@ -1,0 +1,35 @@
+name: Data Smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"  # Mondays 06:17 UTC
+
+jobs:
+  pull-one-slice:
+    if: ${{ secrets.COMTRADE_API_KEY != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          cache-environment: true
+      - name: Pull one monthly TOTAL slice (safe & fast)
+        env:
+          COMTRADE_API_KEY: ${{ secrets.COMTRADE_API_KEY }}
+        shell: bash -l {0}
+        run: |
+          export PYTHONPATH=src
+          ./scripts/pull_comtrade.py \
+            --type C --freq M --cl HS \
+            --period 202401 \
+            --reporter 156 --partner 0 \
+            --flow X --cmd TOTAL
+          ls -lh data_work/
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: comtrade-smoke
+          path: data_work/comtrade_*_TOTAL_*.parquet
+          if-no-files-found: warn
