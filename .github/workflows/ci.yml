@@ -38,3 +38,18 @@ jobs:
           make fmt
           make lint
           make test
+
+      - name: Build figures (no network)
+        shell: bash -l {0}
+        run: |
+          make etl_annual
+          make etl_monthly
+          make figures
+          ls -lh figures || true
+
+      - name: Upload figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: figures/*.png
+          if-no-files-found: warn
