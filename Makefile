@@ -1,39 +1,29 @@
-PY=python
+SHELL := /bin/bash
 
-.PHONY: init lint test fmt clean
+.PHONY: fmt lint test etl_monthly etl_annual figures
 
-init:
-	pre-commit install
-
-lint:
-	black --check src tests scripts
-	isort --check-only src tests scripts
-	flake8 src tests scripts
+# Config
+PYTHONPATH := src
+HS_MAP     := notes/hs_map.csv
 
 fmt:
-	black src tests scripts
-	isort src tests scripts
+	@isort src tests scripts
+	@black src tests scripts
+
+lint:
+	@black --check src tests scripts
+	@isort --check-only src tests scripts
+	@flake8 src tests scripts
 
 test:
-	PYTHONPATH=src pytest -q
+	@PYTHONPATH=$(PYTHONPATH) pytest -q
 
-clean:
-	rm -rf data_work/* outputs/* figures/* __pycache__ */__pycache__
-pull:
-	PYTHONPATH=src ./scripts/pull_comtrade.py --type C --freq M --class HS --period 202401,202402 --reporter 156 --partner 0 --flow X --cmd TOTAL
-
-<<<<<<< HEAD
-figures:
-	PYTHONPATH=src ./scripts/make_figures.py
-
-ci_figures: etl_annual etl_monthly figures
-=======
 etl_monthly:
-	PYTHONPATH=src python -m china_ir.etl --mode monthly --hs-map notes/hs_map.csv
+	@PYTHONPATH=$(PYTHONPATH) python -m china_ir.etl --mode monthly --hs-map $(HS_MAP)
 
 etl_annual:
-	PYTHONPATH=src python -m china_ir.etl --mode annual --hs-map notes/hs_map.csv
+	@PYTHONPATH=$(PYTHONPATH) python -m china_ir.etl --mode annual --hs-map $(HS_MAP)
 
-figures:
-	PYTHONPATH=src ./scripts/make_figures.py
->>>>>>> 1636274 (wip: local edits (fmt + Makefile))
+figures: etl_annual
+	@PYTHONPATH=$(PYTHONPATH) ./scripts/make_figures.py
+	@ls -lh figures/annual_stack.png figures/hhi_monthly.png
