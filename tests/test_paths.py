@@ -1,9 +1,9 @@
-from china_ir.paths import DATA_RAW, DATA_WORK, FIGURES, OUTPUTS, REPO_ROOT, ensure_dirs
+from china_ir import paths as P
 
 
 def test_paths_exist_and_writable():
-    assert REPO_ROOT.exists()
-    ensure_dirs()
-    for p in (DATA_RAW, DATA_WORK, FIGURES, OUTPUTS):
+    P.ensure_dirs()
+    assert P.REPO_ROOT.exists()
+    for p in (P.DATA_RAW, P.DATA_WORK, P.FIGURES, P.OUTPUTS):
         assert p.exists()
         assert p.is_dir()

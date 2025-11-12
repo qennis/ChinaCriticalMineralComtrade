@@ -22,7 +22,18 @@ clean:
 pull:
 	PYTHONPATH=src ./scripts/pull_comtrade.py --type C --freq M --class HS --period 202401,202402 --reporter 156 --partner 0 --flow X --cmd TOTAL
 
+<<<<<<< HEAD
 figures:
 	PYTHONPATH=src ./scripts/make_figures.py
 
 ci_figures: etl_annual etl_monthly figures
+=======
+etl_monthly:
+	PYTHONPATH=src python -m china_ir.etl --mode monthly --hs-map notes/hs_map.csv
+
+etl_annual:
+	PYTHONPATH=src python -m china_ir.etl --mode annual --hs-map notes/hs_map.csv
+
+figures:
+	PYTHONPATH=src ./scripts/make_figures.py
+>>>>>>> 1636274 (wip: local edits (fmt + Makefile))
