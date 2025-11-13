@@ -20,3 +20,7 @@ outputs/
 *.log
 .cache/
 .env
+*~
+data_work/
+figures/
+*.parquet
