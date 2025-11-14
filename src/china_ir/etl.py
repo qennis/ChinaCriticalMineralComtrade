@@ -156,7 +156,7 @@ def _run_monthly(in_glob: str, hs_map: Path) -> None:
 
     parts = [d for d in parts if not d.empty and d.dropna(axis=1, how="all").shape[1] > 0]
     raw = pd.concat(parts, ignore_index=True) if parts else pd.DataFrame()
-
+    raw = raw[raw["period"].astype(str).str.len() == 6].copy()
     if raw.empty:
         # Keep pipeline stable even if raw slices are missing
         (DATA_WORK / "materials_monthly.parquet").write_bytes(b"")

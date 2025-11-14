@@ -24,3 +24,6 @@ outputs/
 data_work/
 figures/
 *.parquet
+
+# editor backups
+*~
