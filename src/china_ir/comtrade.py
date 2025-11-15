@@ -47,7 +47,10 @@ def _http_get(url: str, params: dict) -> dict | None:
         j = r.json()
         if debug and isinstance(j, dict):
             v = j.get("validation") or {}
-            print("[comtrade] validation:", {k: v.get(k) for k in ("count", "message", "status")})
+            print(
+                "[comtrade] validation:",
+                {k: v.get(k) for k in ("count", "message", "status")},
+            )
             print("[comtrade] keys:", list(j.keys()))
         return j if isinstance(j, dict) else None
     except Exception as exc:  # noqa: BLE001
@@ -116,9 +119,19 @@ def fetch_period(
     """
     url = f"{_BASE}/{_TYP}/{freq}/{_CL}"
     per = ",".join(str(p).strip() for p in periods if str(p).strip())
+
+    if partner is None:
+        p = 0  # world
+    else:
+        p_str = str(partner)
+        if p_str.upper() == "ALL":
+            p = "all"  # COMTRADE wants 'all' for all partners
+        else:
+            p = p_str
+
     params = {
         "reporterCode": reporter,
-        "partnerCode": partner,
+        "partnerCode": p,
         "flowCode": flow,
         "cmdCode": cmd,
         "period": per,  # <-- period is a QUERY PARAM in v1
