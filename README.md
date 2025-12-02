@@ -2,6 +2,8 @@
 
 Pipeline for analyzing China’s exports of critical-mineral–related products using UN Comtrade data, with a focus on structure (HS6-level concentration), export controls, and price–volume dynamics.
 
+This repository accompanies my empirical project on China’s export controls on critical minerals. You can find the most recent draft of the paper in `paper/`.
+
 The repo does three main things:
 
 1. **Pulls** monthly HS6 trade data for a curated set of “critical” codes from the Comtrade v1 API.
@@ -47,10 +49,8 @@ conda create -n china-ir python=3.11
 conda activate china-ir
 
 # install dependencies
-pip install -r requirements.txt
-# or, if present:
-# conda env create -f environment.yml
-# conda activate china-ir
+conda env create -f environment.yml
+conda activate china-ir
 ```
 
 The code assumes it’s run from the repository root (where `src/` lives).
