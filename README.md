@@ -1,6 +1,6 @@
-# China IR Paper – Reproducible Research Repo
+# China Critical Mineral Comtrade – Reproducible Research Repo
 
-This repository contains code and data scaffolding for the *China IR Paper* project.
+This repository contains code and data scaffolding for the *China Critical Mineral Comtrade* project.
 
 ## Layout
 ```
@@ -52,5 +52,4 @@ PYTHONPATH=src ./scripts/pull_comtrade.py \
   --reporter 156 --partner 0 \
   --flow X --cmd TOTAL
 
-
-![CI](https://github.com/qennis/china-ir-paper/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/qennis/ChinaCriticalMineralComtrade/actions/workflows/ci.yml/badge.svg)
