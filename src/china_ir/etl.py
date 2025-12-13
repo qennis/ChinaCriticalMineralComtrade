@@ -115,24 +115,24 @@ def attach_hs_map(df: pd.DataFrame, map_csv: Path) -> pd.DataFrame:
     """
     out = df.copy()
 
-    # normalize cmdCode
+    # 1. Normalize cmdCode and generate hs6 (using pre-merge mask)
     if "cmdCode" in out.columns:
         out["cmdCode"] = out["cmdCode"].astype(str).str.strip()
-        is_total = out["cmdCode"].str.upper().eq("TOTAL")
+        # Temporary mask for generating hs6 only on non-total rows
+        _is_tot_pre = out["cmdCode"].str.upper().eq("TOTAL")
     else:
-        is_total = pd.Series(False, index=out.index)
+        _is_tot_pre = pd.Series(False, index=out.index)
 
-    # create hs6 only for non-TOTAL
     out["hs6"] = pd.NA
     if "cmdCode" in out.columns:
-        out.loc[~is_total, "hs6"] = (
-            out.loc[~is_total, "cmdCode"]
+        out.loc[~_is_tot_pre, "hs6"] = (
+            out.loc[~_is_tot_pre, "cmdCode"]
             .astype(str)
             .str.replace(r"\.0$", "", regex=True)
             .str.zfill(6)
         )
 
-    # merge mapping if present
+    # 2. Merge mapping (This effectively re-indexes 'out')
     if map_csv.exists():
         m = pd.read_csv(map_csv, dtype={"hs6": str})
         m["hs6"] = m["hs6"].astype(str).str.zfill(6)
@@ -143,10 +143,12 @@ def attach_hs_map(df: pd.DataFrame, map_csv: Path) -> pd.DataFrame:
         if "group" not in out.columns:
             out["group"] = pd.NA
 
-    # label TOTAL lines
-    if is_total.any():
-        out.loc[is_total, "material"] = "TOTAL"
-        out.loc[is_total, "group"] = "TOTAL"
+    # 3. Label TOTAL lines (Calculate mask on the NEW post-merge dataframe)
+    if "cmdCode" in out.columns:
+        is_total = out["cmdCode"].astype(str).str.upper().eq("TOTAL")
+        if is_total.any():
+            out.loc[is_total, "material"] = "TOTAL"
+            out.loc[is_total, "group"] = "TOTAL"
 
     return out
 

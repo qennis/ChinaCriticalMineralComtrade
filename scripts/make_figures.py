@@ -25,18 +25,57 @@ import numpy as np
 import pandas as pd
 from matplotlib import dates as mdates
 
+from china_ir.etl import _read_glob, _to_int64_series, _value_qty_cols, attach_hs_map
+
 HERE = Path(__file__).resolve()
 ROOT = HERE.parents[1]  # repo root (one level up from scripts/)
 SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from china_ir.etl import _to_int64_series, _value_qty_cols, attach_hs_map  # noqa: E402
 
 pd.plotting.register_matplotlib_converters()
 
 DATA = Path("data_work")
 OUT = Path("figures")
+EVENTS = {
+    "gallium": pd.Timestamp("2023-08-01"),
+    "germanium": pd.Timestamp("2023-08-01"),
+    "graphite": pd.Timestamp("2023-12-01"),
+}
+
+BLOCS = {
+    "Adversary": [
+        "USA",
+        "Japan",
+        "South Korea",
+        "Germany",
+        "Netherlands",
+        "France",
+        "Belgium",
+        "Slovakia",
+        "United Kingdom",
+        "Australia",
+        "Canada",
+        "Taiwan",
+    ],
+    "Intermediary": [
+        "Vietnam",
+        "Malaysia",
+        "Thailand",
+        "India",
+        "Mexico",
+        "Indonesia",
+        "Hungary",
+        "Poland",
+        "Turkey",
+        "Russia",
+        "Hong Kong",
+        "Singapore",
+        "Iran",
+        "Brazil",
+    ],
+}
 
 
 # ------------- helpers -------------
@@ -632,6 +671,183 @@ def plot_hs6_composition_for_group(group: str, year: int, top_n: int = 8):
     print(f"wrote {out}")
 
 
+def plot_rerouting_evidence(groups=["gallium", "graphite"]):
+    """
+    Generates the 'Track 1 Pivot' charts: Did exports shift from Adversaries to Intermediaries?
+    """
+
+    # Load the specific partner parquet we just created
+    raw = _read_glob("partners_granular_*.parquet")
+    if raw.empty:
+        print("Skipping rerouting plots (no granular partner data found)")
+        return
+
+
+# ---------------------------------------------------------
+# 1. The Destination Stack (All Countries)
+# ---------------------------------------------------------
+def plot_destination_stack(groups=["gallium", "graphite", "germanium"]):
+    raw = _read_glob("partners_granular_*.parquet")
+    if raw.empty:
+        return
+
+    hs_map = Path("notes/hs_map.csv")
+    df = attach_hs_map(raw, hs_map)
+    df["period_dt"] = _to_dt(df["period"])
+
+    # Filter for relevant groups
+    df = df[df["group"].isin(groups)]
+
+    for g in groups:
+        sub = df[df["group"] == g].copy()
+        if sub.empty:
+            continue
+
+        # Pivot: Index=Date, Cols=Partner, Values=USD
+        wide = sub.pivot_table(
+            index="period_dt", columns="partner_name", values="primaryValue", aggfunc="sum"
+        ).fillna(0)
+
+        # Sort cols by total volume (largest at bottom)
+        sorted_cols = wide.sum().sort_values(ascending=False).index
+        wide = wide[sorted_cols]
+
+        fig, ax = plt.subplots(figsize=(12, 7), dpi=150)
+        ax.stackplot(wide.index, wide.T, labels=wide.columns, alpha=0.85)
+
+        _date_axis(ax)
+
+        # Add Event Line
+        if g in EVENTS:
+            ax.axvline(EVENTS[g], color="black", ls="--", lw=2, label="Control Effective")
+
+        ax.set_title(f"Destination Stack: {g.title()} Exports by Partner")
+        ax.set_ylabel("Export Value (USD)")
+        ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1), title="Partner")
+
+        plt.tight_layout()
+        fig.savefig(OUT / f"stack_dest_{g}.png")
+        print(f"Generated figures/stack_dest_{g}.png")
+        plt.close()
+
+
+# ---------------------------------------------------------
+# 2. The Strategic Blocs Line Chart (Adversary vs Intermediary)
+# ---------------------------------------------------------
+def plot_bloc_lines(groups=["gallium", "graphite", "germanium"]):
+    raw = _read_glob("partners_granular_*.parquet")
+    if raw.empty:
+        return
+
+    hs_map = Path("notes/hs_map.csv")
+    df = attach_hs_map(raw, hs_map)
+    df["period_dt"] = _to_dt(df["period"])
+
+    # Map partners to blocs
+    bloc_map = {p: b for b, partners in BLOCS.items() for p in partners}
+    df["bloc"] = df["partner_name"].map(bloc_map).fillna("Other")
+
+    for g in groups:
+        sub = df[df["group"] == g].copy()
+        if sub.empty:
+            continue
+
+        # Pivot by Bloc
+        wide = sub.pivot_table(
+            index="period_dt", columns="bloc", values="primaryValue", aggfunc="sum"
+        ).fillna(0)
+
+        fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
+
+        # Plot lines
+        if "Adversary" in wide.columns:
+            ax.plot(
+                wide.index,
+                wide["Adversary"],
+                label="Adversary Bloc (US/JP/EU)",
+                lw=2.5,
+                color="#d62728",
+            )  # Red
+        if "Intermediary" in wide.columns:
+            ax.plot(
+                wide.index,
+                wide["Intermediary"],
+                label="Intermediary Bloc (VN/MY/MX)",
+                lw=2.5,
+                color="#2ca02c",
+            )  # Green
+
+        _date_axis(ax)
+
+        if g in EVENTS:
+            ax.axvline(EVENTS[g], color="black", ls=":", lw=2)
+            ax.text(EVENTS[g], ax.get_ylim()[1] * 0.95, " Control", ha="left")
+
+        ax.set_title(f"Strategic Reconfiguration: {g.title()} (Bloc Flows)")
+        ax.set_ylabel("Export Value (USD)")
+        ax.legend()
+        ax.grid(True, alpha=0.3)
+
+        plt.tight_layout()
+        fig.savefig(OUT / f"line_blocs_{g}.png")
+        print(f"Generated figures/line_blocs_{g}.png")
+        plt.close()
+
+
+# ---------------------------------------------------------
+# 3. Winners & Losers Scatter (Pre vs Post)
+# ---------------------------------------------------------
+def plot_shift_scatter(groups=["gallium", "graphite", "germanium"]):
+    raw = _read_glob("partners_granular_*.parquet")
+    if raw.empty:
+        return
+
+    hs_map = Path("notes/hs_map.csv")
+    df = attach_hs_map(raw, hs_map)
+    df["period_dt"] = _to_dt(df["period"])
+
+    for g in groups:
+        if g not in EVENTS:
+            continue
+        date = EVENTS[g]
+        sub = df[df["group"] == g]
+
+        # 6-month windows
+        pre = sub[(sub["period_dt"] < date) & (sub["period_dt"] >= date - pd.DateOffset(months=6))]
+        post = sub[(sub["period_dt"] >= date) & (sub["period_dt"] < date + pd.DateOffset(months=6))]
+
+        # Mean monthly value
+        pre_mean = pre.groupby("partner_name")["primaryValue"].sum() / 6
+        post_mean = post.groupby("partner_name")["primaryValue"].sum() / 6
+
+        scatter = pd.DataFrame({"Pre": pre_mean, "Post": post_mean}).fillna(0)
+
+        # Filter noise
+        scatter = scatter[scatter["Pre"] + scatter["Post"] > 1000]
+
+        fig, ax = plt.subplots(figsize=(8, 8), dpi=150)
+
+        # 45-degree line
+        limit = max(scatter.max()) * 1.1
+        ax.plot([0, limit], [0, limit], ls="--", c="gray", alpha=0.5)
+
+        # Points
+        ax.scatter(scatter["Pre"], scatter["Post"], s=100, alpha=0.8, edgecolors="w")
+
+        # Labels
+        for country, row in scatter.iterrows():
+            ax.text(row["Pre"], row["Post"] + limit * 0.02, country, ha="center", fontsize=9)
+
+        ax.set_title(f"Winners & Losers: {g.title()} (Avg Monthly Exports)")
+        ax.set_xlabel("Pre-Control (USD)")
+        ax.set_ylabel("Post-Control (USD)")
+
+        plt.tight_layout()
+        fig.savefig(OUT / f"scatter_shift_{g}.png")
+        print(f"Generated figures/scatter_shift_{g}.png")
+        plt.close()
+
+
 # ------------- driver -------------
 def main():
     _ensure_outdir()
@@ -676,6 +892,12 @@ def main():
 
     for g in ["lithium", "graphite", "rare_earths", "gallium", "germanium"]:
         plot_hs6_composition_for_group(g, year=2024, top_n=6)
+
+    print("--- Generating Partner Visualizations ---")
+    plot_destination_stack()
+    plot_bloc_lines()
+    plot_shift_scatter()
+    print("Done.")
 
 
 if __name__ == "__main__":
