@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 """
 scripts/make_advanced_figures.py
-Advanced Track 1 Analysis: Price Divergence, Placebo Tests, and Specification Creep.
+Advanced Analysis: Price Divergence, Event Studies, and Spec Creep.
+
+Updates:
+- Event Study: Window extended to +/- 12 months (2x duration).
+- Divergence Overview: Split into two clear figures (Ga/Ge vs. Graphite).
+- Peer Comparison: Renamed "Placebo" to "Strategic Peer" for accuracy.
 """
 import sys
 from pathlib import Path
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
+import seaborn as sns
 
 # Setup paths
 HERE = Path(__file__).resolve()
@@ -17,15 +24,101 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from china_ir.etl import attach_hs_map  # noqa: E402
-
+# --- CONFIGURATION ---
 DATA = Path("data_work")
-OUT = Path("figures")
-OUT.mkdir(exist_ok=True)
+OUT = Path("figures/advanced")
+OUT.mkdir(parents=True, exist_ok=True)
 
+plt.style.use("seaborn-v0_8-whitegrid")
+plt.rcParams.update(
+    {
+        "font.family": "sans-serif",
+        "axes.titleweight": "bold",
+        "figure.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+)
+
+# --- MAPPINGS ---
 EVENTS = {
-    "gallium": pd.Timestamp("2023-08-01"),
-    "graphite": pd.Timestamp("2023-12-01"),
+    "Gallium/Germanium": pd.Timestamp("2023-08-01"),
+    "Graphite": pd.Timestamp("2023-12-01"),
+}
+
+HS6_TO_SUBGROUP = {
+    "811292": "Unwrought Ga/Ge",
+    "811299": "Wrought Ga/Ge",
+    "285390": "Ga/Ge Compounds",
+    "285000": "Ga/Ge Compounds",
+    "282590": "Ga/Ge Compounds",
+    "282560": "Ga/Ge Compounds",
+    "250410": "Natural Graphite",
+    "380110": "Artificial Graphite",
+    "280461": "Polysilicon",
+    "280530": "Rare Earths (Metal)",
+    "284690": "Rare Earths (Oxide)",
+    "850511": "Rare Earths (Magnet)",
+}
+
+SUBGROUP_TO_BROAD = {
+    "Unwrought Ga/Ge": "Gallium/Germanium",
+    "Wrought Ga/Ge": "Gallium/Germanium",
+    "Ga/Ge Compounds": "Gallium/Germanium",
+    "Natural Graphite": "Graphite",
+    "Artificial Graphite": "Graphite",
+    "Polysilicon": "Polysilicon",
+    "Rare Earths (Metal)": "Rare Earths",
+    "Rare Earths (Oxide)": "Rare Earths",
+    "Rare Earths (Magnet)": "Rare Earths",
+}
+
+CODE_TO_NAME = {
+    842: "USA",
+    392: "Japan",
+    410: "South Korea",
+    276: "Germany",
+    528: "Netherlands",
+    251: "France",
+    703: "Slovakia",
+    56: "Belgium",
+    56: "Belgium",
+    826: "United Kingdom",
+    36: "Australia",
+    124: "Canada",
+    490: "Taiwan",
+    578: "Norway",
+    40: "Austria",
+    380: "Italy",
+    724: "Spain",
+    752: "Sweden",
+    756: "Switzerland",
+    203: "Czech Republic",
+    704: "Vietnam",
+    458: "Malaysia",
+    484: "Mexico",
+    699: "India",
+    764: "Thailand",
+    360: "Indonesia",
+    348: "Hungary",
+    616: "Poland",
+    792: "Turkey",
+    643: "Russia",
+    364: "Iran",
+    76: "Brazil",
+    608: "Philippines",
+    784: "UAE",
+    398: "Kazakhstan",
+    710: "South Africa",
+    834: "Tanzania",
+    508: "Mozambique",
+    818: "Egypt",
+    344: "Hong Kong",
+    702: "Singapore",
+    554: "New Zealand",
+    156: "China",
+    999: "Areas NES",
+    976: "Other Asia NES",
+    977: "Africa NES",
 }
 
 BLOCS = {
@@ -42,6 +135,14 @@ BLOCS = {
         "Australia",
         "Canada",
         "Taiwan",
+        "Norway",
+        "Austria",
+        "Italy",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Czech Republic",
+        "New Zealand",
     ],
     "Intermediary": [
         "Vietnam",
@@ -58,193 +159,356 @@ BLOCS = {
         "Singapore",
         "Iran",
         "Brazil",
+        "Philippines",
+        "UAE",
+        "Kazakhstan",
+        "South Africa",
+        "Tanzania",
+        "Mozambique",
+        "Egypt",
     ],
 }
-# Mapping specific commodities to their 'Controls' vs 'Placebos'
-# We use Aluminum (7601) or Silicon (2804) as control groups
-PLACEBO_PAIRS = [("gallium", "aluminum"), ("gallium", "silicon"), ("graphite", "aluminum")]
+
+# (Treated, Control, Label)
+PEER_PAIRS = [
+    ("Gallium/Germanium", "Rare Earths", "Strategic Peer (Rare Earths)"),
+    ("Graphite", "Polysilicon", "Industrial Peer (Polysilicon)"),
+]
 
 
-def _read_data():
+# --- HELPERS ---
+def _to_dt(yyyymm: pd.Series) -> pd.Series:
+    return pd.to_datetime(yyyymm.astype(str), format="%Y%m")
+
+
+def _date_axis(ax):
+    ax.xaxis.set_major_locator(mdates.YearLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+    ax.grid(True, alpha=0.3, ls="--")
+
+
+def _load_data():
     files = sorted(DATA.glob("partners_granular_*.parquet"))
     if not files:
         return pd.DataFrame()
+
     df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
-    hs_map = Path("notes/hs_map.csv")
-    df = attach_hs_map(df, hs_map)
-    df["period_dt"] = pd.to_datetime(df["period"].astype(str), format="%Y%m")
 
-    # Calculate Unit Value (USD/kg)
-    # Ensure netWgt is numeric
-    df["netWgt"] = pd.to_numeric(df["netWgt"], errors="coerce")
-    df["unit_val"] = df["primaryValue"] / df["netWgt"]
+    # Filters
+    df["period"] = df["period"].astype(str)
+    df["partnerCode"] = pd.to_numeric(df["partnerCode"], errors="coerce").fillna(-1).astype(int)
+    if "flowCode" in df.columns:
+        df = df[df["flowCode"] == "X"]
+    if "reporterCode" in df.columns:
+        df = df[df["reporterCode"] == 156]
 
-    # Map Blocs
+    # Map Groups
+    df["hs6"] = df["cmdCode"].astype(str).str[:6]
+    df["subgroup"] = df["hs6"].map(HS6_TO_SUBGROUP)
+    df["broad_group"] = df["subgroup"].map(SUBGROUP_TO_BROAD)
+    df = df.dropna(subset=["broad_group"])
+
+    # Map Partner Names & Blocs
+    df["partner_name"] = df["partnerCode"].map(CODE_TO_NAME).fillna("Unknown")
     bloc_map = {p: b for b, partners in BLOCS.items() for p in partners}
     df["bloc"] = df["partner_name"].map(bloc_map).fillna("Other")
+
+    df["period_dt"] = _to_dt(df["period"])
+
+    # Quantity
+    df["qty"] = np.nan
+    for c in ["primaryQuantity", "netWgt", "qty"]:
+        if c in df.columns:
+            df["qty"] = pd.to_numeric(df[c], errors="coerce")
+            break
+    df["val"] = pd.to_numeric(df["primaryValue"], errors="coerce").fillna(0)
 
     return df
 
 
-def _date_axis(ax):
-    ax.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%b'%y"))
-    ax.grid(True, alpha=0.3, ls="--")
+# --- 1. Split Divergence Overview (Adversary Premium) ---
+def plot_divergence_overview(df):
+    """Generates two separate plots for Ga/Ge and Graphite premiums."""
+    print("Generating Price Divergence Overview (Split)...")
 
+    families = {
+        "Gallium_Germanium": {
+            "broad": "Gallium/Germanium",
+            "subs": ["Unwrought Ga/Ge", "Wrought Ga/Ge", "Ga/Ge Compounds"],
+            "peer": "Rare Earths",
+        },
+        "Graphite": {
+            "broad": "Graphite",
+            "subs": ["Natural Graphite", "Artificial Graphite"],
+            "peer": "Polysilicon",
+        },
+    }
 
-# 1. Price Divergence Analysis
-def plot_price_divergence(df):
-    """Plot Unit Value (Price/kg) for Adversary vs Intermediary blocs."""
-    print("Generating Price Divergence plots...")
+    # Calculate Ratios
+    all_targets = set()
+    for f in families.values():
+        all_targets.add(f["broad"])
+        all_targets.update(f["subs"])
+        all_targets.add(f["peer"])
 
-    for g, event_date in EVENTS.items():
-        sub = df[(df["group"] == g) & (df["netWgt"] > 0)]
-        if sub.empty:
+    ratios = {}
+    for t in all_targets:
+        if t in SUBGROUP_TO_BROAD.values():
+            col = "broad_group"
+        else:
+            col = "subgroup"
+
+        sub = df[df[col] == t].copy()
+        if sub["qty"].isna().all():
             continue
+        sub = sub[sub["qty"] > 0]
 
-        # Weighted Average Price per Bloc per Month
-        # Sum(Value) / Sum(Qty) is better than Mean(Unit Value)
-        monthly = sub.groupby(["period_dt", "bloc"])[["primaryValue", "netWgt"]].sum()
-        monthly["w_price"] = monthly["primaryValue"] / monthly["netWgt"]
-        pivot = monthly["w_price"].unstack()
+        monthly = sub.groupby(["period_dt", "bloc"]).agg(val=("val", "sum"), qty=("qty", "sum"))
+        monthly["uv"] = monthly["val"] / monthly["qty"]
+        pivot = monthly["uv"].unstack()
 
-        # Filter for key blocs
-        cols = [c for c in ["Adversary", "Intermediary"] if c in pivot.columns]
-        if not cols:
-            continue
+        if "Adversary" in pivot and "Intermediary" in pivot:
+            r = pivot["Adversary"] / pivot["Intermediary"]
+            ratios[t] = r.rolling(3, min_periods=1).mean()
 
-        fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
+    # Generate Plots
+    for fname, cfg in families.items():
+        fig, ax = plt.subplots(figsize=(10, 6))
 
-        for c in cols:
-            color = "tab:red" if c == "Adversary" else "tab:green"
-            ax.plot(pivot.index, pivot[c], label=c, color=color, lw=2)
+        # Broad Group (Thick)
+        if cfg["broad"] in ratios:
+            ax.plot(
+                ratios[cfg["broad"]].index,
+                ratios[cfg["broad"]],
+                label=f"SECTOR: {cfg['broad']}",
+                color="#c0392b",
+                lw=3,
+            )
 
+        # Peer (Dotted)
+        if cfg["peer"] in ratios:
+            ax.plot(
+                ratios[cfg["peer"]].index,
+                ratios[cfg["peer"]],
+                label=f"PEER: {cfg['peer']}",
+                color="#7f8c8d",
+                ls=":",
+                lw=2,
+            )
+
+        # Subgroups (Thin)
+        colors = sns.color_palette("husl", len(cfg["subs"]))
+        for i, sub in enumerate(cfg["subs"]):
+            if sub in ratios:
+                ax.plot(
+                    ratios[sub].index, ratios[sub], label=sub, color=colors[i], lw=1.5, alpha=0.8
+                )
+
+        ax.axhline(1.0, color="black", lw=1)
+        if cfg["broad"] in EVENTS:
+            ax.axvline(EVENTS[cfg["broad"]], color="black", ls="--", label="Control Effective")
+
+        ax.set_title(f"Adversary Price Premium: {cfg['broad']}")
+        ax.set_ylabel("Price Ratio (Adversary / Intermediary)")
         _date_axis(ax)
-        ax.axvline(event_date, color="black", ls="--", label="Control Effective")
-        ax.set_title(f"Price Divergence: {g.title()} (Unit Value USD/kg)")
-        ax.set_ylabel("USD / kg")
-        ax.legend()
+        ax.legend(loc="upper left")
 
-        fig.tight_layout()
-        fig.savefig(OUT / f"analysis_price_{g}.png")
-        plt.close()
+        out_name = f"divergence_overview_{fname.lower()}.png"
+        fig.savefig(OUT / out_name)
+        plt.close(fig)
+        print(f"Saved {out_name}")
 
 
-# 2. Placebo Test (Difference-in-Differences Visual)
-def plot_placebo_test(df):
-    """Compare Restricted Mineral trend vs Control Commodity trend for the SAME Bloc."""
-    print("Generating Placebo (Control) tests...")
+# --- 2. Event Study (Extended Window) ---
+def plot_event_study(df):
+    print("Generating Event Study Comparison...")
 
-    # We focus on the ADVERSARY bloc, as they are the target
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    targets = ["Gallium/Germanium", "Graphite"]
+    colors = {"Gallium/Germanium": "#e74c3c", "Graphite": "#2c3e50"}
+
+    for t in targets:
+        if t not in EVENTS:
+            continue
+        event_date = EVENTS[t]
+
+        # Filter Data
+        sub = df[df["broad_group"] == t].copy()
+        monthly = sub.groupby("period_dt")["val"].sum()
+
+        # Define 24-month window: [Event-12, Event+12]
+        start_date = event_date - pd.DateOffset(months=12)
+        end_date = event_date + pd.DateOffset(months=12)
+
+        window = monthly[(monthly.index >= start_date) & (monthly.index <= end_date)]
+        if window.empty:
+            continue
+
+        # Calculate Baseline from strict 6-month pre-ban window (t-6 to t-1)
+        # This keeps the Index=100 anchor consistent despite the wider view.
+        baseline_start = event_date - pd.DateOffset(months=6)
+        baseline_data = monthly[(monthly.index >= baseline_start) & (monthly.index < event_date)]
+        baseline = baseline_data.mean()
+
+        if baseline == 0:
+            continue
+
+        indexed = (window / baseline) * 100
+
+        # Relative Time Axis
+        months_diff = []
+        for d in indexed.index:
+            diff = (d.year - event_date.year) * 12 + (d.month - event_date.month)
+            months_diff.append(diff)
+
+        ax.plot(
+            months_diff,
+            indexed.values,
+            label=f"{t} (Ban={event_date.date()})",
+            color=colors.get(t, "black"),
+            lw=2.5,
+            marker="o",
+            markersize=4,
+        )
+
+    ax.axvline(0, color="black", ls="--", label="Implementation (t=0)")
+    ax.axhline(100, color="gray", lw=1, alpha=0.5)
+
+    ax.set_title("Event Study: Impact of Export Controls on Total Value")
+    ax.set_xlabel("Months Relative to Implementation")
+    ax.set_ylabel("Export Value Index (100 = 6mo Pre-Ban Avg)")
+    ax.legend()
+
+    # Extended X-Limits
+    ax.set_xlim(-12, 12)
+
+    fig.savefig(OUT / "event_study_comparison.png")
+    plt.close(fig)
+    print("Saved event_study_comparison.png")
+
+
+# --- 3. Peer Comparison ---
+def plot_peer_comparison(df):
+    print("Generating Peer Comparisons...")
     target_bloc = "Adversary"
 
-    for treatment_group, control_group in PLACEBO_PAIRS:
-        if treatment_group not in EVENTS:
+    for treatment, control, label in PEER_PAIRS:
+        if treatment not in EVENTS:
             continue
-        event_date = EVENTS[treatment_group]
+        event_date = EVENTS[treatment]
 
-        sub = df[(df["bloc"] == target_bloc) & (df["group"].isin([treatment_group, control_group]))]
-
-        # Normalize to Index (Pre-Event Mean = 100)
-        # Define Pre-Window: 6 months before event
-        pre_window = (sub["period_dt"] >= event_date - pd.DateOffset(months=6)) & (
-            sub["period_dt"] < event_date
-        )
-
-        pivot = sub.groupby(["period_dt", "group"])["primaryValue"].sum().unstack()
-
-        # Normalize
-        for col in pivot.columns:
-            base = pivot.loc[pivot.index.isin(sub[pre_window]["period_dt"].unique()), col].mean()
-            if base > 0:
-                pivot[col] = (pivot[col] / base) * 100
-
-        fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
-
-        if treatment_group in pivot.columns:
-            ax.plot(
-                pivot.index,
-                pivot[treatment_group],
-                label=f"Treated: {treatment_group.title()}",
-                color="tab:red",
-                lw=2.5,
-            )
-        if control_group in pivot.columns:
-            ax.plot(
-                pivot.index,
-                pivot[control_group],
-                label=f"Control: {control_group.title()}",
-                color="gray",
-                ls="--",
-                lw=1.5,
-            )
-
-        _date_axis(ax)
-        ax.axvline(event_date, color="black", ls=":")
-        ax.set_title(
-            f"Placebo Test: {treatment_group.title()} vs "
-            + f"{control_group.title()} (Exports to {target_bloc})"
-        )
-        ax.set_ylabel("Export Value Index (Pre-Event = 100)")
-        ax.legend()
-
-        fig.tight_layout()
-        fig.savefig(OUT / f"analysis_placebo_{treatment_group}_vs_{control_group}.png")
-        plt.close()
-
-
-# 3. Specification Creep (Product Mix)
-def plot_spec_creep(df):
-    """Track share of specific HS codes within the group over time."""
-    print("Generating Specification Creep analysis...")
-
-    # Focus on Gallium (Raw vs Processed/Compounds)
-    # 811292: Unwrought Gallium (Raw)
-    # 284690: Compounds (Often oxides/nitrides)
-    # Note: Check your map, this might be REE in some maps,
-    # but for Gallium specifically look at your map.csv.
-    # Let's just plot the TOP 3 HS codes share for the group.
-
-    for g in ["gallium", "graphite"]:
-        sub = df[df["group"] == g]
+        sub = df[
+            (df["bloc"] == target_bloc) & (df["broad_group"].isin([treatment, control]))
+        ].copy()
         if sub.empty:
             continue
 
-        # Identify top 3 codes by total volume
-        top_codes = sub.groupby("hs6")["primaryValue"].sum().nlargest(3).index.tolist()
+        raw = sub.groupby(["period_dt", "broad_group"])["val"].sum().unstack()
 
-        pivot = sub.pivot_table(
-            index="period_dt", columns="hs6", values="primaryValue", aggfunc="sum"
-        ).fillna(0)
+        # Normalize
+        start_win = event_date - pd.DateOffset(months=6)
+        indexed = pd.DataFrame(index=raw.index)
 
-        # Calculate Share
-        pivot_share = pivot.div(pivot.sum(axis=1), axis=0)
+        for col in [treatment, control]:
+            if col not in raw.columns:
+                continue
+            baseline_slice = raw.loc[(raw.index >= start_win) & (raw.index < event_date), col]
+            scalar = baseline_slice.mean()
+            if scalar > 0:
+                indexed[col] = (raw[col] / scalar) * 100
+            else:
+                indexed[col] = np.nan
 
-        # Only plot top codes
-        plot_data = pivot_share[top_codes]
+        smooth = indexed.rolling(3, min_periods=1).mean()
 
-        fig, ax = plt.subplots(figsize=(10, 6), dpi=150)
-        plot_data.plot(kind="area", ax=ax, alpha=0.8, stacked=True)
+        if treatment not in smooth.columns or control not in smooth.columns:
+            continue
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.plot(
+            smooth.index, smooth[treatment], label=f"Target: {treatment}", color="#c0392b", lw=3
+        )
+        ax.plot(
+            smooth.index, smooth[control], label=f"Peer: {control}", color="#95a5a6", ls="--", lw=2
+        )
 
         _date_axis(ax)
-        if g in EVENTS:
-            ax.axvline(EVENTS[g], color="black", ls="--")
+        ax.axvline(event_date, color="black", ls=":", label="Control Effective")
+        ax.axhline(100, color="black", lw=1, alpha=0.5)
 
-        ax.set_title(f"Specification Shift: {g.title()} (Share of Export Value)")
-        ax.set_ylabel("Share (0-1)")
-        ax.legend(title="HS Code")
+        ax.set_title(f"Strategic Peer Test: Exports to {target_bloc}\n(Reference: {label})")
+        ax.set_ylabel("Value Index (100 = 6mo Pre-Ban Avg)")
+        ax.legend(loc="upper left")
 
-        fig.tight_layout()
-        fig.savefig(OUT / f"analysis_specs_{g}.png")
-        plt.close()
+        fname = f"peer_{treatment}_vs_{control}".replace("/", "").replace(" ", "_").lower()
+        fig.savefig(OUT / f"{fname}.png")
+        plt.close(fig)
+
+
+# --- 4. Drilldowns ---
+def plot_drilldowns(df):
+    print("Generating Drilldown Plots...")
+    for g, event_date in EVENTS.items():
+        sub = df[df["broad_group"] == g].copy()
+        if sub["qty"].isna().all():
+            continue
+        sub = sub[sub["qty"] > 0]
+        monthly = sub.groupby(["period_dt", "bloc"]).agg(val=("val", "sum"), qty=("qty", "sum"))
+        monthly["uv"] = monthly["val"] / monthly["qty"]
+        pivot = monthly["uv"].unstack()
+        cols = [c for c in ["Adversary", "Intermediary"] if c in pivot.columns]
+        if len(cols) < 2:
+            continue
+        pivot = pivot[cols].rolling(3, min_periods=1).mean()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        for c in cols:
+            ax.plot(pivot.index, pivot[c], label=c, lw=2.5)
+        _date_axis(ax)
+        ax.axvline(event_date, color="black", ls=":")
+        ax.set_title(f"Price Divergence: {g}")
+        fig.savefig(OUT / f"divergence_sector_{g.replace('/','_').lower()}.png")
+        plt.close(fig)
+
+    targets = set(EVENTS.keys())
+    for code in df["hs6"].unique():
+        subgroup = HS6_TO_SUBGROUP.get(code)
+        broad = SUBGROUP_TO_BROAD.get(subgroup)
+        if broad not in targets:
+            continue
+
+        sub = df[df["hs6"] == code].copy()
+        if sub["qty"].isna().all():
+            continue
+        sub = sub[sub["qty"] > 10]
+        monthly = sub.groupby(["period_dt", "bloc"]).agg(val=("val", "sum"), qty=("qty", "sum"))
+        monthly["uv"] = monthly["val"] / monthly["qty"]
+        pivot = monthly["uv"].unstack()
+        cols = [c for c in ["Adversary", "Intermediary"] if c in pivot.columns]
+        if len(cols) < 2:
+            continue
+        pivot = pivot[cols].rolling(3, min_periods=1).mean()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        for c in cols:
+            ax.plot(pivot.index, pivot[c], label=c, lw=2.5)
+        _date_axis(ax)
+        ax.axvline(EVENTS[broad], color="black", ls=":")
+        ax.set_title(f"HS6 Divergence: {code} ({subgroup})")
+        fig.savefig(OUT / f"divergence_hs6_{code}.png")
+        plt.close(fig)
+
+
+def main():
+    df = _load_data()
+    if not df.empty:
+        plot_divergence_overview(df)
+        plot_event_study(df)
+        plot_peer_comparison(df)
+        plot_drilldowns(df)
+        print(f"Done. Figures saved to {OUT}")
+    else:
+        print("No data found.")
 
 
 if __name__ == "__main__":
-    df = _read_data()
-    if not df.empty:
-        plot_price_divergence(df)
-        plot_placebo_test(df)
-        plot_spec_creep(df)
-        print("Done. Check figures/analysis_*.png")
-    else:
-        print("No data found.")
+    main()

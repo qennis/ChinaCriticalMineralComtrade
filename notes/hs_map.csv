@@ -1,34 +1,15 @@
 hs6,material,group,notes
-250410,natural_graphite,graphite,in powder or in flakes
-250490,natural_graphite,graphite,other
-260200,manganese,manganese,manganese ores and concentrates
-260300,copper,copper,copper ores and concentrates
-260400,nickel,nickel,nickel ores and concentrates
-260500,cobalt,cobalt,cobalt ores and concentrates
-280461,silicon,silicon,silicon <99.99% purity (poly/metal-grade)
-280469,silicon,silicon,other (incl. 99.99%+)
-280520,lithium,lithium,lithium (metal)
-280530,rare_earths,rare_earths,rare-earth metals; scandium & yttrium (metals/mixtures)
-282200,cobalt,cobalt,cobalt oxides and hydroxides
-282520,lithium,lithium,lithium oxide and hydroxide
-282560,germanium,germanium,germanium oxides / germanium dioxide
-283691,lithium,lithium,lithium carbonates
-284610,rare_earths,rare_earths,cerium compounds
-284690,rare_earths,rare_earths,other REE/Sc/Y compounds
-380110,artificial_graphite,graphite,artificial graphite (synthetic)
-380110,graphite_natural,anode,"flake; verify subheadings"
-380120,artificial_graphite,graphite,colloidal or semi-colloidal
-380120,graphite_artificial,anode,""
-740311,copper,copper,refined copper—cathodes and sections of cathodes
-750100,nickel,nickel,nickel mattes & oxide sinters / other intermediates
-750210,nickel,nickel,unwrought nickel (not alloyed)
-750220,nickel,nickel,unwrought nickel (alloys)
-760110,aluminum,aluminum,"aluminium—unwrought,not alloyed"
-760120,aluminum,aluminum,"aluminium—unwrought,alloys"
-760120,aluminum_unwrought,aluminum,""
-810520,cobalt,cobalt,cobalt mattes & other intermediates; unwrought; powders
-810530,cobalt,cobalt,waste and scrap
-810590,cobalt,cobalt,other (incl. wrought)
-811100,manganese,manganese,manganese and articles thereof (incl. waste & scrap)
-811230,germanium,germanium,germanium & articles n.e.s.; waste & scrap
-811292,gallium,gallium,gallium (unwrought; waste & scrap; powders)
+81129210,gallium_unwrought,gallium,"Unwrought Gallium (Raw metal)"
+81129910,gallium_wrought,gallium,"Wrought Gallium (Bars/rods)"
+28539040,gallium_arsenide,gallium,"Gallium Arsenide (GaAs) - Critical Semi Input"
+28500019,gallium_nitride,gallium,"Gallium Nitride (GaN) - Critical Power Input"
+28259090,gallium_oxide,gallium,"Gallium Oxide (Ga2O3)"
+81129220,germanium_unwrought,germanium,"Unwrought Germanium"
+28256000,germanium_oxide,germanium,"Germanium Oxides"
+25041010,spherical_graphite,graphite,"Spherical Graphite (Battery Anode Grade)"
+25041091,natural_graphite_flake,graphite,"Natural Graphite (Flake)"
+38011000,artificial_graphite,graphite,"Artificial Graphite"
+28046100,silicon_poly,silicon,"Silicon >99.99% (Polysilicon)"
+28053000,rare_earths_metal,rare_earths,"Rare earth metals (La, Ce, Nd, Pr, etc.)"
+28469010,rare_earths_oxide,rare_earths,"Oxides of rare earths"
+85051110,rare_earth_magnets,rare_earths,"RE Permanent Magnets (The major downstream leverage)"

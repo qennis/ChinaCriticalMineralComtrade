@@ -1,0 +1,768 @@
+period_dt,broad_group,bloc,qty
+2017-01-01,Gallium/Germanium,Adversary,261339.895
+2017-01-01,Gallium/Germanium,Intermediary,31852.615
+2017-01-01,Graphite,Adversary,13365581.319
+2017-01-01,Graphite,Intermediary,2521387.968
+2017-01-01,Polysilicon,Adversary,0.0
+2017-01-01,Polysilicon,Intermediary,0.0
+2017-01-01,Rare Earths,Adversary,1902529.749
+2017-01-01,Rare Earths,Intermediary,1136419.012
+2017-02-01,Gallium/Germanium,Adversary,264950.779
+2017-02-01,Gallium/Germanium,Intermediary,25938.732
+2017-02-01,Graphite,Adversary,10548805.715
+2017-02-01,Graphite,Intermediary,1342549.147
+2017-02-01,Polysilicon,Adversary,0.0
+2017-02-01,Polysilicon,Intermediary,0.0
+2017-02-01,Rare Earths,Adversary,1182928.158
+2017-02-01,Rare Earths,Intermediary,783845.623
+2017-03-01,Gallium/Germanium,Adversary,315401.65099999995
+2017-03-01,Gallium/Germanium,Intermediary,37665.387
+2017-03-01,Graphite,Adversary,14353812.203
+2017-03-01,Graphite,Intermediary,3291392.686
+2017-03-01,Polysilicon,Adversary,0.0
+2017-03-01,Polysilicon,Intermediary,0.0
+2017-03-01,Rare Earths,Adversary,1929767.3199999998
+2017-03-01,Rare Earths,Intermediary,1234527.638
+2017-04-01,Gallium/Germanium,Adversary,254650.542
+2017-04-01,Gallium/Germanium,Intermediary,30026.824
+2017-04-01,Graphite,Adversary,13309429.336
+2017-04-01,Graphite,Intermediary,3119082.773
+2017-04-01,Polysilicon,Adversary,0.0
+2017-04-01,Polysilicon,Intermediary,0.0
+2017-04-01,Rare Earths,Adversary,1953209.707
+2017-04-01,Rare Earths,Intermediary,1192768.28
+2017-05-01,Gallium/Germanium,Adversary,249777.056
+2017-05-01,Gallium/Germanium,Intermediary,11280.271
+2017-05-01,Graphite,Adversary,15254230.003
+2017-05-01,Graphite,Intermediary,3298728.138
+2017-05-01,Polysilicon,Adversary,0.0
+2017-05-01,Polysilicon,Intermediary,0.0
+2017-05-01,Rare Earths,Adversary,2102326.017
+2017-05-01,Rare Earths,Intermediary,1335244.828
+2017-06-01,Gallium/Germanium,Adversary,238295.225
+2017-06-01,Gallium/Germanium,Intermediary,34239.574
+2017-06-01,Graphite,Adversary,14822380.455
+2017-06-01,Graphite,Intermediary,3254214.729
+2017-06-01,Polysilicon,Adversary,0.0
+2017-06-01,Polysilicon,Intermediary,0.0
+2017-06-01,Rare Earths,Adversary,2050014.883
+2017-06-01,Rare Earths,Intermediary,1178797.9100000001
+2017-07-01,Gallium/Germanium,Adversary,382438.288
+2017-07-01,Gallium/Germanium,Intermediary,26495.047
+2017-07-01,Graphite,Adversary,15756918.322
+2017-07-01,Graphite,Intermediary,3372416.0670000003
+2017-07-01,Polysilicon,Adversary,0.0
+2017-07-01,Polysilicon,Intermediary,0.0
+2017-07-01,Rare Earths,Adversary,1872012.307
+2017-07-01,Rare Earths,Intermediary,1185676.977
+2017-08-01,Gallium/Germanium,Adversary,250825.88
+2017-08-01,Gallium/Germanium,Intermediary,13950.060000000001
+2017-08-01,Graphite,Adversary,15871885.921
+2017-08-01,Graphite,Intermediary,2830588.026
+2017-08-01,Polysilicon,Adversary,0.0
+2017-08-01,Polysilicon,Intermediary,0.0
+2017-08-01,Rare Earths,Adversary,2106592.568
+2017-08-01,Rare Earths,Intermediary,1299803.034
+2017-09-01,Gallium/Germanium,Adversary,282638.85199999996
+2017-09-01,Gallium/Germanium,Intermediary,36884.756
+2017-09-01,Graphite,Adversary,15264642.404000001
+2017-09-01,Graphite,Intermediary,2796443.203
+2017-09-01,Polysilicon,Adversary,0.0
+2017-09-01,Polysilicon,Intermediary,0.0
+2017-09-01,Rare Earths,Adversary,1880330.561
+2017-09-01,Rare Earths,Intermediary,1241470.834
+2017-10-01,Gallium/Germanium,Adversary,344547.882
+2017-10-01,Gallium/Germanium,Intermediary,9199.736
+2017-10-01,Graphite,Adversary,16009098.822
+2017-10-01,Graphite,Intermediary,2767650.761
+2017-10-01,Polysilicon,Adversary,0.0
+2017-10-01,Polysilicon,Intermediary,0.0
+2017-10-01,Rare Earths,Adversary,2136709.946
+2017-10-01,Rare Earths,Intermediary,1267203.069
+2017-11-01,Gallium/Germanium,Adversary,258191.004
+2017-11-01,Gallium/Germanium,Intermediary,17418.339
+2017-11-01,Graphite,Adversary,19319100.228
+2017-11-01,Graphite,Intermediary,3871071.776
+2017-11-01,Polysilicon,Adversary,0.0
+2017-11-01,Polysilicon,Intermediary,0.0
+2017-11-01,Rare Earths,Adversary,2294903.665
+2017-11-01,Rare Earths,Intermediary,1568067.886
+2017-12-01,Gallium/Germanium,Adversary,276334.148
+2017-12-01,Gallium/Germanium,Intermediary,7650.427
+2017-12-01,Graphite,Adversary,17449277.328
+2017-12-01,Graphite,Intermediary,2841584.163
+2017-12-01,Polysilicon,Adversary,0.0
+2017-12-01,Polysilicon,Intermediary,0.0
+2017-12-01,Rare Earths,Adversary,2682293.567
+2017-12-01,Rare Earths,Intermediary,1564796.2480000001
+2018-01-01,Gallium/Germanium,Adversary,8374271.898
+2018-01-01,Gallium/Germanium,Intermediary,3094656.0
+2018-01-01,Graphite,Adversary,44734091.0
+2018-01-01,Graphite,Intermediary,7862893.0
+2018-01-01,Polysilicon,Adversary,70925.0
+2018-01-01,Polysilicon,Intermediary,156428.0
+2018-01-01,Rare Earths,Adversary,6990367.215
+2018-01-01,Rare Earths,Intermediary,4472976.867000001
+2018-02-01,Gallium/Germanium,Adversary,7856829.0
+2018-02-01,Gallium/Germanium,Intermediary,2077105.0
+2018-02-01,Graphite,Adversary,26108990.0
+2018-02-01,Graphite,Intermediary,5837980.0
+2018-02-01,Polysilicon,Adversary,216099.022
+2018-02-01,Polysilicon,Intermediary,185758.66
+2018-02-01,Rare Earths,Adversary,7566508.073
+2018-02-01,Rare Earths,Intermediary,4137570.066
+2018-03-01,Gallium/Germanium,Adversary,10044694.0
+2018-03-01,Gallium/Germanium,Intermediary,2518819.605
+2018-03-01,Graphite,Adversary,32488009.0
+2018-03-01,Graphite,Intermediary,5844326.0
+2018-03-01,Polysilicon,Adversary,114947.199
+2018-03-01,Polysilicon,Intermediary,70109.292
+2018-03-01,Rare Earths,Adversary,6821251.5940000005
+2018-03-01,Rare Earths,Intermediary,2710605.0
+2018-04-01,Gallium/Germanium,Adversary,8910959.0
+2018-04-01,Gallium/Germanium,Intermediary,3239195.0
+2018-04-01,Graphite,Adversary,26360719.0
+2018-04-01,Graphite,Intermediary,7398825.0
+2018-04-01,Polysilicon,Adversary,67957.0
+2018-04-01,Polysilicon,Intermediary,100389.015
+2018-04-01,Rare Earths,Adversary,7461756.8379999995
+2018-04-01,Rare Earths,Intermediary,4142356.096
+2018-05-01,Gallium/Germanium,Adversary,10231293.263
+2018-05-01,Gallium/Germanium,Intermediary,3009663.95
+2018-05-01,Graphite,Adversary,33249977.0
+2018-05-01,Graphite,Intermediary,7252208.0
+2018-05-01,Polysilicon,Adversary,66525.707
+2018-05-01,Polysilicon,Intermediary,24073.0
+2018-05-01,Rare Earths,Adversary,8392497.07
+2018-05-01,Rare Earths,Intermediary,4729197.0
+2018-06-01,Gallium/Germanium,Adversary,8673144.0
+2018-06-01,Gallium/Germanium,Intermediary,2416071.0
+2018-06-01,Graphite,Adversary,37137281.0
+2018-06-01,Graphite,Intermediary,8269479.0
+2018-06-01,Polysilicon,Adversary,46553.0
+2018-06-01,Polysilicon,Intermediary,206450.0
+2018-06-01,Rare Earths,Adversary,9062407.0
+2018-06-01,Rare Earths,Intermediary,4849456.4399999995
+2018-07-01,Gallium/Germanium,Adversary,9470240.683
+2018-07-01,Gallium/Germanium,Intermediary,2270654.0
+2018-07-01,Graphite,Adversary,37109794.0
+2018-07-01,Graphite,Intermediary,9312846.722
+2018-07-01,Polysilicon,Adversary,51295.722
+2018-07-01,Polysilicon,Intermediary,72017.583
+2018-07-01,Rare Earths,Adversary,8256092.542
+2018-07-01,Rare Earths,Intermediary,4296959.0
+2018-08-01,Gallium/Germanium,Adversary,11250151.201
+2018-08-01,Gallium/Germanium,Intermediary,3260095.0
+2018-08-01,Graphite,Adversary,26971943.0
+2018-08-01,Graphite,Intermediary,8594447.0
+2018-08-01,Polysilicon,Adversary,52494.564
+2018-08-01,Polysilicon,Intermediary,68506.0
+2018-08-01,Rare Earths,Adversary,7793145.698
+2018-08-01,Rare Earths,Intermediary,4687778.251
+2018-09-01,Gallium/Germanium,Adversary,10067254.0
+2018-09-01,Gallium/Germanium,Intermediary,2516833.645
+2018-09-01,Graphite,Adversary,31654741.0
+2018-09-01,Graphite,Intermediary,8382352.0
+2018-09-01,Polysilicon,Adversary,210974.0
+2018-09-01,Polysilicon,Intermediary,1195.0
+2018-09-01,Rare Earths,Adversary,8218533.802
+2018-09-01,Rare Earths,Intermediary,4224820.0
+2018-10-01,Gallium/Germanium,Adversary,10078971.392
+2018-10-01,Gallium/Germanium,Intermediary,2986959.0
+2018-10-01,Graphite,Adversary,37330728.0
+2018-10-01,Graphite,Intermediary,8660055.0
+2018-10-01,Polysilicon,Adversary,44947.0
+2018-10-01,Polysilicon,Intermediary,39614.0
+2018-10-01,Rare Earths,Adversary,6243934.335
+2018-10-01,Rare Earths,Intermediary,3588570.0
+2018-11-01,Gallium/Germanium,Adversary,13045234.281
+2018-11-01,Gallium/Germanium,Intermediary,3379823.9359999998
+2018-11-01,Graphite,Adversary,28177447.0
+2018-11-01,Graphite,Intermediary,8117017.0
+2018-11-01,Polysilicon,Adversary,72353.122
+2018-11-01,Polysilicon,Intermediary,12101.0
+2018-11-01,Rare Earths,Adversary,8794715.485
+2018-11-01,Rare Earths,Intermediary,4233071.0
+2018-12-01,Gallium/Germanium,Adversary,11013018.0
+2018-12-01,Gallium/Germanium,Intermediary,3485934.342
+2018-12-01,Graphite,Adversary,34722539.0
+2018-12-01,Graphite,Intermediary,8600436.0
+2018-12-01,Polysilicon,Adversary,197030.0
+2018-12-01,Polysilicon,Intermediary,266.0
+2018-12-01,Rare Earths,Adversary,9068498.0
+2018-12-01,Rare Earths,Intermediary,3837380.0
+2019-01-01,Gallium/Germanium,Adversary,11713821.139
+2019-01-01,Gallium/Germanium,Intermediary,3600812.0
+2019-01-01,Graphite,Adversary,33905116.0
+2019-01-01,Graphite,Intermediary,7201291.0
+2019-01-01,Polysilicon,Adversary,110186.0
+2019-01-01,Polysilicon,Intermediary,608.0
+2019-01-01,Rare Earths,Adversary,7897058.452
+2019-01-01,Rare Earths,Intermediary,4708216.137
+2019-02-01,Gallium/Germanium,Adversary,8924195.868
+2019-02-01,Gallium/Germanium,Intermediary,2303834.682
+2019-02-01,Graphite,Adversary,27204262.397
+2019-02-01,Graphite,Intermediary,5270272.0
+2019-02-01,Polysilicon,Adversary,55975.403
+2019-02-01,Polysilicon,Intermediary,219.0
+2019-02-01,Rare Earths,Adversary,4445913.902
+2019-02-01,Rare Earths,Intermediary,2745558.0
+2019-03-01,Gallium/Germanium,Adversary,10389814.85
+2019-03-01,Gallium/Germanium,Intermediary,3126508.0
+2019-03-01,Graphite,Adversary,29619357.372
+2019-03-01,Graphite,Intermediary,9888863.0
+2019-03-01,Polysilicon,Adversary,163336.7
+2019-03-01,Polysilicon,Intermediary,206.4
+2019-03-01,Rare Earths,Adversary,7443417.45
+2019-03-01,Rare Earths,Intermediary,3314144.0
+2019-04-01,Gallium/Germanium,Adversary,9306876.692
+2019-04-01,Gallium/Germanium,Intermediary,3004089.507
+2019-04-01,Graphite,Adversary,27663085.0
+2019-04-01,Graphite,Intermediary,8099421.634
+2019-04-01,Polysilicon,Adversary,56077.0
+2019-04-01,Polysilicon,Intermediary,14546.198
+2019-04-01,Rare Earths,Adversary,6905600.353
+2019-04-01,Rare Earths,Intermediary,3531894.0
+2019-05-01,Gallium/Germanium,Adversary,10939760.0
+2019-05-01,Gallium/Germanium,Intermediary,2872199.0
+2019-05-01,Graphite,Adversary,26819787.0
+2019-05-01,Graphite,Intermediary,9528295.0
+2019-05-01,Polysilicon,Adversary,50235.065
+2019-05-01,Polysilicon,Intermediary,6664.023
+2019-05-01,Rare Earths,Adversary,7301337.8
+2019-05-01,Rare Earths,Intermediary,4891618.0
+2019-06-01,Gallium/Germanium,Adversary,10813222.183
+2019-06-01,Gallium/Germanium,Intermediary,3863778.643
+2019-06-01,Graphite,Adversary,33676830.344
+2019-06-01,Graphite,Intermediary,7592514.0
+2019-06-01,Polysilicon,Adversary,78078.0
+2019-06-01,Polysilicon,Intermediary,531.0
+2019-06-01,Rare Earths,Adversary,7116072.789
+2019-06-01,Rare Earths,Intermediary,4117997.0
+2019-07-01,Gallium/Germanium,Adversary,9086700.482
+2019-07-01,Gallium/Germanium,Intermediary,3443225.685
+2019-07-01,Graphite,Adversary,28339445.0
+2019-07-01,Graphite,Intermediary,8848277.0
+2019-07-01,Polysilicon,Adversary,117525.513
+2019-07-01,Polysilicon,Intermediary,40013.695999999996
+2019-07-01,Rare Earths,Adversary,8880265.946
+2019-07-01,Rare Earths,Intermediary,4256244.068
+2019-08-01,Gallium/Germanium,Adversary,12181759.696
+2019-08-01,Gallium/Germanium,Intermediary,2992174.2
+2019-08-01,Graphite,Adversary,29645315.0
+2019-08-01,Graphite,Intermediary,9202379.0
+2019-08-01,Polysilicon,Adversary,115413.0
+2019-08-01,Polysilicon,Intermediary,103.811
+2019-08-01,Rare Earths,Adversary,7630562.913
+2019-08-01,Rare Earths,Intermediary,4959877.0
+2019-09-01,Gallium/Germanium,Adversary,10879296.72
+2019-09-01,Gallium/Germanium,Intermediary,3197643.0
+2019-09-01,Graphite,Adversary,23900537.0
+2019-09-01,Graphite,Intermediary,9061490.0
+2019-09-01,Polysilicon,Adversary,199824.955
+2019-09-01,Polysilicon,Intermediary,559.15
+2019-09-01,Rare Earths,Adversary,6552183.0
+2019-09-01,Rare Earths,Intermediary,3592598.0
+2019-10-01,Gallium/Germanium,Adversary,10389860.972000001
+2019-10-01,Gallium/Germanium,Intermediary,2939543.691
+2019-10-01,Graphite,Adversary,22695425.0
+2019-10-01,Graphite,Intermediary,8368005.0
+2019-10-01,Polysilicon,Adversary,158639.941
+2019-10-01,Polysilicon,Intermediary,1827.6
+2019-10-01,Rare Earths,Adversary,6661950.958
+2019-10-01,Rare Earths,Intermediary,4288462.0
+2019-11-01,Gallium/Germanium,Adversary,11147960.766
+2019-11-01,Gallium/Germanium,Intermediary,2639339.0379999997
+2019-11-01,Graphite,Adversary,27862382.0
+2019-11-01,Graphite,Intermediary,8855573.0
+2019-11-01,Polysilicon,Adversary,79390.573
+2019-11-01,Polysilicon,Intermediary,302.0
+2019-11-01,Rare Earths,Adversary,5468375.0
+2019-11-01,Rare Earths,Intermediary,3722248.0
+2019-12-01,Gallium/Germanium,Adversary,14758308.502
+2019-12-01,Gallium/Germanium,Intermediary,2415192.768
+2019-12-01,Graphite,Adversary,30362552.0
+2019-12-01,Graphite,Intermediary,9317543.0
+2019-12-01,Polysilicon,Adversary,104729.368
+2019-12-01,Polysilicon,Intermediary,211225.974
+2019-12-01,Rare Earths,Adversary,7184879.525
+2019-12-01,Rare Earths,Intermediary,4690841.0
+2020-01-01,Gallium/Germanium,Adversary,11001612.0
+2020-01-01,Gallium/Germanium,Intermediary,1976076.0
+2020-01-01,Graphite,Adversary,33031961.0
+2020-01-01,Graphite,Intermediary,10616541.0
+2020-01-01,Polysilicon,Adversary,77754.0
+2020-01-01,Polysilicon,Intermediary,78993.0
+2020-01-01,Rare Earths,Adversary,8330119.438
+2020-01-01,Rare Earths,Intermediary,5269255.0
+2020-02-01,Gallium/Germanium,Adversary,5949547.0
+2020-02-01,Gallium/Germanium,Intermediary,1188935.6570000001
+2020-02-01,Graphite,Adversary,18548004.0
+2020-02-01,Graphite,Intermediary,4735614.998
+2020-02-01,Polysilicon,Adversary,61681.0
+2020-02-01,Polysilicon,Intermediary,48000.0
+2020-02-01,Rare Earths,Adversary,2370075.0
+2020-02-01,Rare Earths,Intermediary,1367517.78
+2020-03-01,Gallium/Germanium,Adversary,20782856.436
+2020-03-01,Gallium/Germanium,Intermediary,2491115.0
+2020-03-01,Graphite,Adversary,37201034.0
+2020-03-01,Graphite,Intermediary,14226728.0
+2020-03-01,Polysilicon,Adversary,210951.205
+2020-03-01,Polysilicon,Intermediary,137.025
+2020-03-01,Rare Earths,Adversary,8877111.0
+2020-03-01,Rare Earths,Intermediary,4755960.125
+2020-04-01,Gallium/Germanium,Adversary,13425312.0
+2020-04-01,Gallium/Germanium,Intermediary,1477824.115
+2020-04-01,Graphite,Adversary,35315057.0
+2020-04-01,Graphite,Intermediary,12301830.0
+2020-04-01,Polysilicon,Adversary,169581.0
+2020-04-01,Polysilicon,Intermediary,645.0
+2020-04-01,Rare Earths,Adversary,7139777.0
+2020-04-01,Rare Earths,Intermediary,3801819.0
+2020-05-01,Gallium/Germanium,Adversary,11838958.326
+2020-05-01,Gallium/Germanium,Intermediary,1413088.065
+2020-05-01,Graphite,Adversary,18460961.025
+2020-05-01,Graphite,Intermediary,8438021.0
+2020-05-01,Polysilicon,Adversary,72029.543
+2020-05-01,Polysilicon,Intermediary,16470.0
+2020-05-01,Rare Earths,Adversary,6053202.123
+2020-05-01,Rare Earths,Intermediary,2415708.0
+2020-06-01,Gallium/Germanium,Adversary,10528083.502
+2020-06-01,Gallium/Germanium,Intermediary,1244525.0
+2020-06-01,Graphite,Adversary,17916957.284
+2020-06-01,Graphite,Intermediary,5875269.0
+2020-06-01,Polysilicon,Adversary,174066.528
+2020-06-01,Polysilicon,Intermediary,14455.148
+2020-06-01,Rare Earths,Adversary,5801451.0
+2020-06-01,Rare Earths,Intermediary,3090418.0
+2020-07-01,Gallium/Germanium,Adversary,10766256.447
+2020-07-01,Gallium/Germanium,Intermediary,1556808.6439999999
+2020-07-01,Graphite,Adversary,19819209.0
+2020-07-01,Graphite,Intermediary,9405645.953
+2020-07-01,Polysilicon,Adversary,228648.0
+2020-07-01,Polysilicon,Intermediary,223.56
+2020-07-01,Rare Earths,Adversary,4656399.975
+2020-07-01,Rare Earths,Intermediary,4425206.0
+2020-08-01,Gallium/Germanium,Adversary,10215317.735
+2020-08-01,Gallium/Germanium,Intermediary,1534730.8360000001
+2020-08-01,Graphite,Adversary,18479202.0
+2020-08-01,Graphite,Intermediary,14318519.202
+2020-08-01,Polysilicon,Adversary,44475.603
+2020-08-01,Polysilicon,Intermediary,679.748
+2020-08-01,Rare Earths,Adversary,5373323.376
+2020-08-01,Rare Earths,Intermediary,4645894.0
+2020-09-01,Gallium/Germanium,Adversary,12227512.445
+2020-09-01,Gallium/Germanium,Intermediary,1836213.547
+2020-09-01,Graphite,Adversary,27647421.0
+2020-09-01,Graphite,Intermediary,13076113.569
+2020-09-01,Polysilicon,Adversary,47440.681
+2020-09-01,Polysilicon,Intermediary,585.0
+2020-09-01,Rare Earths,Adversary,5472293.529
+2020-09-01,Rare Earths,Intermediary,5063410.0
+2020-10-01,Gallium/Germanium,Adversary,14158281.428
+2020-10-01,Gallium/Germanium,Intermediary,2493506.0
+2020-10-01,Graphite,Adversary,26758252.0
+2020-10-01,Graphite,Intermediary,13696576.0
+2020-10-01,Polysilicon,Adversary,92392.0
+2020-10-01,Polysilicon,Intermediary,36139.152
+2020-10-01,Rare Earths,Adversary,5446865.0
+2020-10-01,Rare Earths,Intermediary,4699005.0
+2020-11-01,Gallium/Germanium,Adversary,14850419.045
+2020-11-01,Gallium/Germanium,Intermediary,1884262.163
+2020-11-01,Graphite,Adversary,32024420.0
+2020-11-01,Graphite,Intermediary,15661094.0
+2020-11-01,Polysilicon,Adversary,385584.0
+2020-11-01,Polysilicon,Intermediary,48563.998
+2020-11-01,Rare Earths,Adversary,5696865.864
+2020-11-01,Rare Earths,Intermediary,5258353.104
+2020-12-01,Gallium/Germanium,Adversary,15742667.349000001
+2020-12-01,Gallium/Germanium,Intermediary,1630960.693
+2020-12-01,Graphite,Adversary,25518492.0
+2020-12-01,Graphite,Intermediary,15126397.0
+2020-12-01,Polysilicon,Adversary,91944.216
+2020-12-01,Polysilicon,Intermediary,442.0
+2020-12-01,Rare Earths,Adversary,7721425.225
+2020-12-01,Rare Earths,Intermediary,5296425.0
+2021-01-01,Gallium/Germanium,Adversary,17875643.11
+2021-01-01,Gallium/Germanium,Intermediary,1720912.0
+2021-01-01,Graphite,Adversary,37280013.736
+2021-01-01,Graphite,Intermediary,15277912.0
+2021-01-01,Polysilicon,Adversary,48694.445
+2021-01-01,Polysilicon,Intermediary,50246.617
+2021-01-01,Rare Earths,Adversary,7142651.0
+2021-01-01,Rare Earths,Intermediary,5890957.0
+2021-02-01,Gallium/Germanium,Adversary,13255947.103
+2021-02-01,Gallium/Germanium,Intermediary,874099.379
+2021-02-01,Graphite,Adversary,23307422.0
+2021-02-01,Graphite,Intermediary,8968609.535
+2021-02-01,Polysilicon,Adversary,817839.199
+2021-02-01,Polysilicon,Intermediary,2485.91
+2021-02-01,Rare Earths,Adversary,6563760.689
+2021-02-01,Rare Earths,Intermediary,3504207.547
+2021-03-01,Gallium/Germanium,Adversary,18679302.077
+2021-03-01,Gallium/Germanium,Intermediary,2407156.0
+2021-03-01,Graphite,Adversary,34972222.0
+2021-03-01,Graphite,Intermediary,14428713.0
+2021-03-01,Polysilicon,Adversary,165552.66
+2021-03-01,Polysilicon,Intermediary,21837.415
+2021-03-01,Rare Earths,Adversary,7812589.0
+2021-03-01,Rare Earths,Intermediary,4350066.0
+2021-04-01,Gallium/Germanium,Adversary,15979309.513
+2021-04-01,Gallium/Germanium,Intermediary,2599188.272
+2021-04-01,Graphite,Adversary,31749591.0
+2021-04-01,Graphite,Intermediary,15924708.0
+2021-04-01,Polysilicon,Adversary,71264.0
+2021-04-01,Polysilicon,Intermediary,671.126
+2021-04-01,Rare Earths,Adversary,7153230.873
+2021-04-01,Rare Earths,Intermediary,5053029.598999999
+2021-05-01,Gallium/Germanium,Adversary,17472542.821000002
+2021-05-01,Gallium/Germanium,Intermediary,2253949.0
+2021-05-01,Graphite,Adversary,30241501.66
+2021-05-01,Graphite,Intermediary,12472277.0
+2021-05-01,Polysilicon,Adversary,118394.0
+2021-05-01,Polysilicon,Intermediary,428.149
+2021-05-01,Rare Earths,Adversary,8034222.8
+2021-05-01,Rare Earths,Intermediary,4968236.0
+2021-06-01,Gallium/Germanium,Adversary,17922529.0
+2021-06-01,Gallium/Germanium,Intermediary,1941989.967
+2021-06-01,Graphite,Adversary,38993242.0
+2021-06-01,Graphite,Intermediary,15745403.0
+2021-06-01,Polysilicon,Adversary,141929.31
+2021-06-01,Rare Earths,Adversary,7913349.0
+2021-06-01,Rare Earths,Intermediary,5285191.0
+2021-07-01,Gallium/Germanium,Adversary,18534448.84
+2021-07-01,Gallium/Germanium,Intermediary,1853938.4070000001
+2021-07-01,Graphite,Adversary,33697667.0
+2021-07-01,Graphite,Intermediary,10815242.0
+2021-07-01,Polysilicon,Adversary,138613.848
+2021-07-01,Polysilicon,Intermediary,55.0
+2021-07-01,Rare Earths,Adversary,8224967.447
+2021-07-01,Rare Earths,Intermediary,4501578.0
+2021-08-01,Gallium/Germanium,Adversary,17997665.4
+2021-08-01,Gallium/Germanium,Intermediary,1908362.0
+2021-08-01,Graphite,Adversary,41627555.0
+2021-08-01,Graphite,Intermediary,10765092.0
+2021-08-01,Polysilicon,Adversary,152720.0
+2021-08-01,Polysilicon,Intermediary,462.549
+2021-08-01,Rare Earths,Adversary,8591494.203
+2021-08-01,Rare Earths,Intermediary,4691967.322
+2021-09-01,Gallium/Germanium,Adversary,19844163.632999998
+2021-09-01,Gallium/Germanium,Intermediary,1518884.352
+2021-09-01,Graphite,Adversary,36676242.0
+2021-09-01,Graphite,Intermediary,12933971.0
+2021-09-01,Polysilicon,Adversary,149831.508
+2021-09-01,Polysilicon,Intermediary,1093.775
+2021-09-01,Rare Earths,Adversary,8187750.246
+2021-09-01,Rare Earths,Intermediary,5363998.979
+2021-10-01,Gallium/Germanium,Adversary,17370853.433
+2021-10-01,Gallium/Germanium,Intermediary,1425640.695
+2021-10-01,Graphite,Adversary,32417887.0
+2021-10-01,Graphite,Intermediary,10902198.0
+2021-10-01,Polysilicon,Adversary,417963.547
+2021-10-01,Polysilicon,Intermediary,40583.194
+2021-10-01,Rare Earths,Adversary,7884739.478
+2021-10-01,Rare Earths,Intermediary,4888816.0
+2021-11-01,Gallium/Germanium,Adversary,16921134.899
+2021-11-01,Gallium/Germanium,Intermediary,2597761.272
+2021-11-01,Graphite,Adversary,42480568.0
+2021-11-01,Graphite,Intermediary,14669548.0
+2021-11-01,Polysilicon,Adversary,168964.348
+2021-11-01,Polysilicon,Intermediary,24810.015
+2021-11-01,Rare Earths,Adversary,9066059.0
+2021-11-01,Rare Earths,Intermediary,5164490.441
+2021-12-01,Gallium/Germanium,Adversary,17891863.877
+2021-12-01,Gallium/Germanium,Intermediary,2106011.5470000003
+2021-12-01,Graphite,Adversary,33529505.0
+2021-12-01,Graphite,Intermediary,14570331.0
+2021-12-01,Polysilicon,Adversary,133185.0
+2021-12-01,Polysilicon,Intermediary,30351.0
+2021-12-01,Rare Earths,Adversary,8974439.105
+2021-12-01,Rare Earths,Intermediary,5712557.0
+2022-01-01,Gallium/Germanium,Adversary,16468722.017
+2022-01-01,Gallium/Germanium,Intermediary,1910674.71
+2022-01-01,Graphite,Adversary,34885364.0
+2022-01-01,Graphite,Intermediary,11676959.0
+2022-01-01,Polysilicon,Adversary,126332.58
+2022-01-01,Polysilicon,Intermediary,25387.443
+2022-01-01,Rare Earths,Adversary,7837422.097
+2022-01-01,Rare Earths,Intermediary,6516575.153
+2022-02-01,Gallium/Germanium,Adversary,11947059.0
+2022-02-01,Gallium/Germanium,Intermediary,1556158.184
+2022-02-01,Graphite,Adversary,23077389.0
+2022-02-01,Graphite,Intermediary,9608248.0
+2022-02-01,Polysilicon,Adversary,157445.816
+2022-02-01,Polysilicon,Intermediary,194.0
+2022-02-01,Rare Earths,Adversary,7496253.39
+2022-02-01,Rare Earths,Intermediary,3217323.21
+2022-03-01,Gallium/Germanium,Adversary,16967929.414
+2022-03-01,Gallium/Germanium,Intermediary,1419202.458
+2022-03-01,Graphite,Adversary,17917072.0
+2022-03-01,Graphite,Intermediary,12113059.0
+2022-03-01,Polysilicon,Adversary,161373.339
+2022-03-01,Polysilicon,Intermediary,669.107
+2022-03-01,Rare Earths,Adversary,8948431.305
+2022-03-01,Rare Earths,Intermediary,4222093.142
+2022-04-01,Gallium/Germanium,Adversary,15726872.299
+2022-04-01,Gallium/Germanium,Intermediary,1683998.581
+2022-04-01,Graphite,Adversary,34646372.0
+2022-04-01,Graphite,Intermediary,13939382.0
+2022-04-01,Polysilicon,Adversary,126785.0
+2022-04-01,Polysilicon,Intermediary,328.7
+2022-04-01,Rare Earths,Adversary,7893974.6899999995
+2022-04-01,Rare Earths,Intermediary,5082391.0
+2022-05-01,Gallium/Germanium,Adversary,15988434.219999999
+2022-05-01,Gallium/Germanium,Intermediary,1686588.0
+2022-05-01,Graphite,Adversary,34723509.0
+2022-05-01,Graphite,Intermediary,14425342.0
+2022-05-01,Polysilicon,Adversary,138488.452
+2022-05-01,Polysilicon,Intermediary,58959.906
+2022-05-01,Rare Earths,Adversary,9157038.986
+2022-05-01,Rare Earths,Intermediary,5122830.373
+2022-06-01,Gallium/Germanium,Adversary,17948354.122
+2022-06-01,Gallium/Germanium,Intermediary,1877780.787
+2022-06-01,Graphite,Adversary,35121073.0
+2022-06-01,Graphite,Intermediary,17504025.0
+2022-06-01,Polysilicon,Adversary,122209.339
+2022-06-01,Polysilicon,Intermediary,372.0
+2022-06-01,Rare Earths,Adversary,8633372.735
+2022-06-01,Rare Earths,Intermediary,5023681.623
+2022-07-01,Gallium/Germanium,Adversary,16328371.353
+2022-07-01,Gallium/Germanium,Intermediary,2154865.15
+2022-07-01,Graphite,Adversary,33113413.406
+2022-07-01,Graphite,Intermediary,15713224.0
+2022-07-01,Polysilicon,Adversary,174484.80800000002
+2022-07-01,Polysilicon,Intermediary,613.0
+2022-07-01,Rare Earths,Adversary,8447027.226
+2022-07-01,Rare Earths,Intermediary,5352129.025
+2022-08-01,Gallium/Germanium,Adversary,16985745.602
+2022-08-01,Gallium/Germanium,Intermediary,2119741.9390000002
+2022-08-01,Graphite,Adversary,39479512.393
+2022-08-01,Graphite,Intermediary,17423747.0
+2022-08-01,Polysilicon,Adversary,113105.0
+2022-08-01,Polysilicon,Intermediary,33744.638
+2022-08-01,Rare Earths,Adversary,7160731.61
+2022-08-01,Rare Earths,Intermediary,5232014.0
+2022-09-01,Gallium/Germanium,Adversary,16778972.431
+2022-09-01,Gallium/Germanium,Intermediary,2323244.122
+2022-09-01,Graphite,Adversary,34704656.303
+2022-09-01,Graphite,Intermediary,20437999.0
+2022-09-01,Polysilicon,Adversary,166308.55599999998
+2022-09-01,Polysilicon,Intermediary,87565.0
+2022-09-01,Rare Earths,Adversary,7325814.106000001
+2022-09-01,Rare Earths,Intermediary,5204351.0
+2022-10-01,Gallium/Germanium,Adversary,15362949.359
+2022-10-01,Gallium/Germanium,Intermediary,1522106.376
+2022-10-01,Graphite,Adversary,32753213.674
+2022-10-01,Graphite,Intermediary,16356213.0
+2022-10-01,Polysilicon,Adversary,115120.486
+2022-10-01,Polysilicon,Intermediary,458727.0
+2022-10-01,Rare Earths,Adversary,6953672.0
+2022-10-01,Rare Earths,Intermediary,4624193.197
+2022-11-01,Gallium/Germanium,Adversary,15918746.942999998
+2022-11-01,Gallium/Germanium,Intermediary,2096042.885
+2022-11-01,Graphite,Adversary,30432815.0
+2022-11-01,Graphite,Intermediary,19783644.0
+2022-11-01,Polysilicon,Adversary,116395.016
+2022-11-01,Polysilicon,Intermediary,15170.208999999999
+2022-11-01,Rare Earths,Adversary,5995890.107
+2022-11-01,Rare Earths,Intermediary,5183938.0
+2022-12-01,Gallium/Germanium,Adversary,23235723.184
+2022-12-01,Gallium/Germanium,Intermediary,2249724.927
+2022-12-01,Graphite,Adversary,39395583.0
+2022-12-01,Graphite,Intermediary,21375570.118
+2022-12-01,Polysilicon,Adversary,189224.422
+2022-12-01,Polysilicon,Intermediary,10332.415
+2022-12-01,Rare Earths,Adversary,7436829.669
+2022-12-01,Rare Earths,Intermediary,4448894.081
+2023-01-01,Gallium/Germanium,Adversary,17762485.834
+2023-01-01,Gallium/Germanium,Intermediary,1843677.973
+2023-01-01,Graphite,Adversary,39197311.129999995
+2023-01-01,Graphite,Intermediary,23112085.0
+2023-01-01,Polysilicon,Adversary,67203.022
+2023-01-01,Polysilicon,Intermediary,1353.0
+2023-01-01,Rare Earths,Adversary,7992642.9
+2023-01-01,Rare Earths,Intermediary,5821374.983
+2023-02-01,Gallium/Germanium,Adversary,16215969.848
+2023-02-01,Gallium/Germanium,Intermediary,1591335.29
+2023-02-01,Graphite,Adversary,26476312.793
+2023-02-01,Graphite,Intermediary,19423041.0
+2023-02-01,Polysilicon,Adversary,86746.761
+2023-02-01,Polysilicon,Intermediary,136594.211
+2023-02-01,Rare Earths,Adversary,5090110.97
+2023-02-01,Rare Earths,Intermediary,3160948.046
+2023-03-01,Gallium/Germanium,Adversary,22704313.621999998
+2023-03-01,Gallium/Germanium,Intermediary,2263328.51
+2023-03-01,Graphite,Adversary,34828797.0
+2023-03-01,Graphite,Intermediary,27444687.0
+2023-03-01,Polysilicon,Adversary,81580.102
+2023-03-01,Polysilicon,Intermediary,1015925.0
+2023-03-01,Rare Earths,Adversary,7990698.515
+2023-03-01,Rare Earths,Intermediary,5540864.0
+2023-04-01,Gallium/Germanium,Adversary,21957087.582
+2023-04-01,Gallium/Germanium,Intermediary,1764048.4849999999
+2023-04-01,Graphite,Adversary,37078712.0
+2023-04-01,Graphite,Intermediary,22142603.0
+2023-04-01,Polysilicon,Adversary,90956.043
+2023-04-01,Polysilicon,Intermediary,226298.0
+2023-04-01,Rare Earths,Adversary,8235822.561
+2023-04-01,Rare Earths,Intermediary,5724505.385
+2023-05-01,Gallium/Germanium,Adversary,19815931.052
+2023-05-01,Gallium/Germanium,Intermediary,2611974.293
+2023-05-01,Graphite,Adversary,42130083.0
+2023-05-01,Graphite,Intermediary,21525350.0
+2023-05-01,Polysilicon,Adversary,83976.587
+2023-05-01,Polysilicon,Intermediary,598700.0
+2023-05-01,Rare Earths,Adversary,8949085.656
+2023-05-01,Rare Earths,Intermediary,4941842.584
+2023-06-01,Gallium/Germanium,Adversary,20744693.695
+2023-06-01,Gallium/Germanium,Intermediary,2819665.046
+2023-06-01,Graphite,Adversary,41437770.0
+2023-06-01,Graphite,Intermediary,20273314.0
+2023-06-01,Polysilicon,Adversary,49250.063
+2023-06-01,Polysilicon,Intermediary,1756355.838
+2023-06-01,Rare Earths,Adversary,8756077.682
+2023-06-01,Rare Earths,Intermediary,5913332.542
+2023-07-01,Gallium/Germanium,Adversary,21821286.107
+2023-07-01,Gallium/Germanium,Intermediary,2945146.37
+2023-07-01,Graphite,Adversary,41236256.0
+2023-07-01,Graphite,Intermediary,20096731.093000002
+2023-07-01,Polysilicon,Adversary,44368.767
+2023-07-01,Polysilicon,Intermediary,888818.0
+2023-07-01,Rare Earths,Adversary,8749482.953
+2023-07-01,Rare Earths,Intermediary,5545592.0
+2023-08-01,Gallium/Germanium,Adversary,21257576.742
+2023-08-01,Gallium/Germanium,Intermediary,2124855.772
+2023-08-01,Graphite,Adversary,35245555.672
+2023-08-01,Graphite,Intermediary,21278813.0
+2023-08-01,Polysilicon,Adversary,82339.0
+2023-08-01,Polysilicon,Intermediary,61541.309
+2023-08-01,Rare Earths,Adversary,8290202.296
+2023-08-01,Rare Earths,Intermediary,5123595.0
+2023-09-01,Gallium/Germanium,Adversary,19174906.51
+2023-09-01,Gallium/Germanium,Intermediary,2702920.165
+2023-09-01,Graphite,Adversary,32890417.049
+2023-09-01,Graphite,Intermediary,22998689.879
+2023-09-01,Polysilicon,Adversary,90896.035
+2023-09-01,Polysilicon,Intermediary,172270.365
+2023-09-01,Rare Earths,Adversary,8039600.898
+2023-09-01,Rare Earths,Intermediary,4669937.602
+2023-10-01,Gallium/Germanium,Adversary,13967458.469
+2023-10-01,Gallium/Germanium,Intermediary,2982328.385
+2023-10-01,Graphite,Adversary,31038219.0
+2023-10-01,Graphite,Intermediary,20647828.0
+2023-10-01,Polysilicon,Adversary,65615.839
+2023-10-01,Polysilicon,Intermediary,442321.0
+2023-10-01,Rare Earths,Adversary,7556080.836
+2023-10-01,Rare Earths,Intermediary,4367803.0
+2023-11-01,Gallium/Germanium,Adversary,16109822.536
+2023-11-01,Gallium/Germanium,Intermediary,2655460.832
+2023-11-01,Graphite,Adversary,57170894.0
+2023-11-01,Graphite,Intermediary,31811605.0
+2023-11-01,Polysilicon,Adversary,37303.437
+2023-11-01,Polysilicon,Intermediary,1755654.0
+2023-11-01,Rare Earths,Adversary,7104865.476
+2023-11-01,Rare Earths,Intermediary,5379773.0
+2023-12-01,Gallium/Germanium,Adversary,17773539.954
+2023-12-01,Gallium/Germanium,Intermediary,3100032.97
+2023-12-01,Graphite,Adversary,18936272.0
+2023-12-01,Graphite,Intermediary,21807668.0
+2023-12-01,Polysilicon,Adversary,124589.0
+2023-12-01,Polysilicon,Intermediary,1237173.0
+2023-12-01,Rare Earths,Adversary,6608840.176
+2023-12-01,Rare Earths,Intermediary,5158709.0
+2024-01-01,Gallium/Germanium,Adversary,17408532.189
+2024-01-01,Gallium/Germanium,Intermediary,3167022.0
+2024-01-01,Graphite,Adversary,28804189.0
+2024-01-01,Graphite,Intermediary,24021424.0
+2024-01-01,Polysilicon,Adversary,413941.458
+2024-01-01,Polysilicon,Intermediary,596281.5009999999
+2024-01-01,Rare Earths,Adversary,10159347.349
+2024-01-01,Rare Earths,Intermediary,6161362.0
+2024-02-01,Gallium/Germanium,Adversary,16124149.728
+2024-02-01,Gallium/Germanium,Intermediary,2601166.849
+2024-02-01,Graphite,Adversary,25751604.0
+2024-02-01,Graphite,Intermediary,20104536.0
+2024-02-01,Polysilicon,Adversary,40088.616
+2024-02-01,Polysilicon,Intermediary,1822078.72
+2024-02-01,Rare Earths,Adversary,5388474.285
+2024-02-01,Rare Earths,Intermediary,4391758.818
+2024-03-01,Gallium/Germanium,Adversary,19412465.687
+2024-03-01,Gallium/Germanium,Intermediary,3692710.6859999998
+2024-03-01,Graphite,Adversary,35027365.0
+2024-03-01,Graphite,Intermediary,27901705.0
+2024-03-01,Polysilicon,Adversary,299741.696
+2024-03-01,Polysilicon,Intermediary,1865663.3080000002
+2024-03-01,Rare Earths,Adversary,7768398.405
+2024-03-01,Rare Earths,Intermediary,4421425.012
+2024-04-01,Gallium/Germanium,Adversary,20516791.59
+2024-04-01,Gallium/Germanium,Intermediary,2838367.829
+2024-04-01,Graphite,Adversary,33235558.0
+2024-04-01,Graphite,Intermediary,25044004.0
+2024-04-01,Polysilicon,Adversary,545901.548
+2024-04-01,Polysilicon,Intermediary,2712326.102
+2024-04-01,Rare Earths,Adversary,8685190.88
+2024-04-01,Rare Earths,Intermediary,5242738.589
+2024-05-01,Gallium/Germanium,Adversary,18373456.844
+2024-05-01,Gallium/Germanium,Intermediary,4052805.159
+2024-05-01,Graphite,Adversary,29471186.0
+2024-05-01,Graphite,Intermediary,22569687.0
+2024-05-01,Polysilicon,Adversary,965040.0
+2024-05-01,Polysilicon,Intermediary,3452032.737
+2024-05-01,Rare Earths,Adversary,9801776.147
+2024-05-01,Rare Earths,Intermediary,6301076.0
+2024-06-01,Gallium/Germanium,Adversary,18852988.650000002
+2024-06-01,Gallium/Germanium,Intermediary,2981369.049
+2024-06-01,Graphite,Adversary,38156901.0
+2024-06-01,Graphite,Intermediary,19825425.0
+2024-06-01,Polysilicon,Adversary,333359.0
+2024-06-01,Polysilicon,Intermediary,4378062.429
+2024-06-01,Rare Earths,Adversary,8647222.079
+2024-06-01,Rare Earths,Intermediary,6327851.006
+2024-07-01,Gallium/Germanium,Adversary,13284830.095999999
+2024-07-01,Gallium/Germanium,Intermediary,4532308.4799999995
+2024-07-01,Graphite,Adversary,37267787.0
+2024-07-01,Graphite,Intermediary,14867491.0
+2024-07-01,Polysilicon,Adversary,497720.198
+2024-07-01,Polysilicon,Intermediary,5998771.437
+2024-07-01,Rare Earths,Adversary,8841066.668
+2024-07-01,Rare Earths,Intermediary,6234135.641
+2024-08-01,Gallium/Germanium,Adversary,15519614.608000001
+2024-08-01,Gallium/Germanium,Intermediary,4259586.371
+2024-08-01,Graphite,Adversary,29821683.0
+2024-08-01,Graphite,Intermediary,22294306.0
+2024-08-01,Polysilicon,Adversary,375392.481
+2024-08-01,Polysilicon,Intermediary,4275148.113
+2024-08-01,Rare Earths,Adversary,8580200.42
+2024-08-01,Rare Earths,Intermediary,5953529.082
+2024-09-01,Gallium/Germanium,Adversary,13789775.276
+2024-09-01,Gallium/Germanium,Intermediary,6211698.135
+2024-09-01,Graphite,Adversary,28168350.0
+2024-09-01,Graphite,Intermediary,27769615.0
+2024-09-01,Polysilicon,Adversary,782625.0
+2024-09-01,Polysilicon,Intermediary,4147374.253
+2024-09-01,Rare Earths,Adversary,7491763.54
+2024-09-01,Rare Earths,Intermediary,5402892.0
+2024-10-01,Gallium/Germanium,Adversary,14264585.101999998
+2024-10-01,Gallium/Germanium,Intermediary,4993548.234
+2024-10-01,Graphite,Adversary,29964846.0
+2024-10-01,Graphite,Intermediary,20031403.0
+2024-10-01,Polysilicon,Adversary,563106.782
+2024-10-01,Polysilicon,Intermediary,3134501.348
+2024-10-01,Rare Earths,Adversary,7286651.948
+2024-10-01,Rare Earths,Intermediary,6606357.569
+2024-11-01,Gallium/Germanium,Adversary,12151982.968
+2024-11-01,Gallium/Germanium,Intermediary,4368860.0709999995
+2024-11-01,Graphite,Adversary,26977880.0
+2024-11-01,Graphite,Intermediary,22833189.0
+2024-11-01,Polysilicon,Adversary,370492.708
+2024-11-01,Polysilicon,Intermediary,3678595.377
+2024-11-01,Rare Earths,Adversary,7694053.478
+2024-11-01,Rare Earths,Intermediary,5833789.654
+2024-12-01,Gallium/Germanium,Adversary,15569540.963
+2024-12-01,Gallium/Germanium,Intermediary,5647497.05
+2024-12-01,Graphite,Adversary,33092861.0
+2024-12-01,Graphite,Intermediary,33251165.0
+2024-12-01,Polysilicon,Adversary,937713.765
+2024-12-01,Polysilicon,Intermediary,4932295.989
+2024-12-01,Rare Earths,Adversary,7564159.908
+2024-12-01,Rare Earths,Intermediary,5434746.0
