@@ -1,0 +1,194 @@
+\documentclass[
+  12pt,
+  aip,
+  onecolumn,
+  amsmath,amssymb,
+  preprint,    % <-- use this instead of reprint
+]{revtex4-1}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage{hyperref} % <-- see next section
+
+\bibliographystyle{aipnum4-1}
+
+\makeatletter
+\def\@email#1#2{%
+ \endgroup
+ \patchcmd{\titleblock@produce}
+  {\frontmatter@RRAPformat}
+  {\frontmatter@RRAPformat{\produce@RRAP{*#1\href{mailto:#2}{#2}}}\frontmatter@RRAPformat}
+  {}{}
+}%
+\makeatother
+
+\begin{document}
+\singlespacing
+\preprint{AIP/123-QED}
+
+\title[Dual-Track Governance in China’s Critical Minerals]{Beyond Rare Earths: Dual-Track Governance in China’s Critical Minerals Strategy for Semiconductors and Clean Energy, 2010-2025}
+
+% Force line breaks with \\
+\author{Quinn Ennis}
+\email{quinn.ennis@yale.edu.}
+\affiliation{Department of Physics, Yale University}%
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+While non-rare-earth minerals including lithium, cobalt, nickel, graphite, germanium and gallium are central to the energy transition and semiconductor manufacturing, they sit in fragmented regimes and have received little academic attention. The work described here presents the case that China's approach to these minerals can be characterized as a dual-track governance strategy: (1) governance-by-chokepoint, encompassing precision export licensing that turns midstream dominance into leverage, and (2) governance-by-institution, where Beijing uses BRI-style finance and standards to build a permissive environment for re-shoring. Using a dataset with partner-level trade flows from 2018 to 2024, this study provides a rigorous set of event-study evidence on the first track. This analysis reveals that Beijing employs a bifurcated strategy. Gallium controls act as a means of rent extraction, as adversaries are forced to pay a $50\%$ price premium and trade is rerouted through intermediaries. Graphite controls act instead as a geopolitical filter, where China severs supply to G7 competitors while subsidizing strategic partners like Iran and Indonesia. These findings, in addition to challenging the simple embargo narrative, suggest that in order maximize structural power, China uses granular licensing as a means of reconfiguring global supply chains into a hub-and-spoke system.
+\end{abstract}
+\maketitle
+
+\section{\label{sec:intro}Introduction and Background}
+\subsection{EVs, semiconductors, and China’s mineral hegemony}
+Fifteen years ago, the maximum range for an electric vehicle commercially available in the United Stated was under $100$ miles, while today many models boast ranges upwards of $500$ miles \cite{DOE_EPA_FuelEconomy_2024}. This development is a story of scientific achievement and engineering breakthroughs, but it is also a geopolitical story. Break open most EV batteries on the market today, and you’ll find a $50 - 100$ kg graphite anode \cite{ECGA_2023_GraphiteInBatteries}, $92\%$ of which is produced in China’s anode supply chain. And while each new generation of batteries has seen major changes to cathode design, each chemistry has remained tethered to Chinese-controlled nodes in the critical-minerals system. Roughly $60\%$ of all nickel is now mined in Indonesia with the majority controlled by just two Chinese firms \cite{Reuters_2025_ChineseControl75Ni}, cobalt is $74\%$ mined in the DRC but almost entirely refined in China \cite{VisualCapitalist_2024_CobaltProduction2023}, and lithium is mined chiefly in Australia, Chile, and China yet more than $60\%$ of refining occurs in China \cite{IEA_2023_ETP}. 
+
+The power-electronics stack increasingly leans on gallium (for GaN) and germanium, and China controls about $99\%$ of primary gallium production and more than $60\%$ of refined germanium production \cite{CEPA_2023_GalliumGermanium}. These minerals and the problem of Chinese control over the supply chain are not limited to battery production. Indeed, the global energy transition and semiconductor manufacturing hinge on a set of non-rare-earth critical minerals — lithium, cobalt, nickel, gallium, germanium, graphite — over which China exerts outsized influence across mining, processing, and governance. Thus, while on the surface a technical story about materials and manufacturing, this is also an  governance and geoeconomic story that leads us to ask who sets the rules that structure this dependence and how that structural position is used strategically.
+
+\subsection{Empirical puzzle}
+There have been significant scholarly and policy debates on rare earth elements (REE), particularly in the context of the 2010 Chinese embargo against Japan \cite{EvenettFritz_2023_RevisitingChinaJapanRareEarths}. The REE episode is now viewed as the canonical case for debates centered on weaponized interdependence, coercive leverage, and vulnerabilities tied to concentrated supply. While this article will draw on that body of research as source of both inspiration and comparison, it focused instead on non-REE minerals, which are unique in that they are crucial to decarbonization and advanced manufacturing efforts but lie in more fragmented regimes and are relatively understudied in the field. 
+
+In the domain of non-REE critical minerals, China's recent behavior is fairly puzzling. On one hand, Beijing has targeted midstream chokepoints with the introduction of increasingly granular export controls and licensing requirements. In July 2023, it pushed through new licensing for gallium and germanium products effective that August \cite{BlackwoodDeFilippo2024}, which were followed in December of that year by further licensing for graphite-anode materials \cite{BensonDenamiel2023}. Simultaneously, seemingly in an attempt to limit U.S. efforts to reduce reliance on China's manufacturing stack, Beijing supplemented their materials licensing measures with targeted restrictions focused specifically on extraction and processing technology \cite{LiuPatton2023}. Most of these restrictions were not walked back until the meeting between Xi Jinping and Donald Trump at the end of October 2025 \cite{Bradsher2025}.
+
+On the other hand, China has focused on presenting itself as a responsible creator of order in critical minerals. The China Chamber of Commerce of Metals, Minerals and Chemicals (CCCMC) has issued due-diligence guidelines that are clearly modeled in part on the frameworks from the Organization for Economic Co-operation and Development (OECD), signaling both autonomy and degree of isomorphism in norm diffusion \cite{CCCMC2015}. Both the Green Belt and Road agenda and the 2022 joint Ministry of Commerce (MOFCOM) and Ministry of Ecology and Environment (MEE) guidelines on ecological and environmental protection for outbound investment work to explicitly align Chinese finance with community consultation, ecological due diligence, and host country law \cite{ClientEarthGBRI,MOFCOMMEE2022}. In this way, in both its rhetoric and increasingly in formal documents, Beijing seeks to depict its firms as stewards of sustainable development while presenting its outbound finance as a means of achieving a greener, more orderly globalization.
+
+When viewed in tandem, these two sides of Chinese policy vis-a-vis non-REE critical minerals create the empirical puzzle of this article. How then should we make sense of a state that is simultaneously using precise export controls on gallium, germanium, and graphite in a way that resembles a system of coercive governance via chokepoints, while also promulgating Green BRI, MOFCOM–MEE environmental guidelines, and CCCMC due-diligence frameworks that both emulate and rival Western standards? Rather than viewing these export controls as merely episodic bouts of retaliation in the context of otherwise cooperative governance, this article argues that this combination of controls (Track 1) and standards (Track 2) are better seen as a coherent strategy to shape order.
+
+\subsection{Research question}
+This article addresses this puzzle by asking how China uses export controls on gallium, germanium, and graphite to shift the fundamental structure of global non-REE mineral trade.  After answering these questions, I then analyze what this reveals about the efficacy of midstream supply chain bottleneck as tools of statecraft as well as China's role in an international order that is increasingly plural and issue-specific.
+
+To better answer this over arching question, this question and resulting analysis is broken down into two sub-questions, and the empirical focus of this work is placed on the first:
+\begin{itemize}
+    \item \textbf{Export controls and trade reconfiguration (Track 1):} In what ways do Chinese export controls and licensing measures on gallium, germanium, graphite and related technologies serve to reconfigure patterns of trade? Do they simply depress volumes, or do they also induce partner switching, rerouting through third countries, and specification creep that allows for the relocation of chokepoints from raw materials to a narrowly defined set of intermediates?
+    \item \textbf{Institutional context (Track 2):} How does Beijing ensure that these coercive measures interact with the broader landscape of BRI-style bundles to entrench PRC-aligned norms and flows?
+\end{itemize}
+
+
+\subsection{Argument in brief}
+The central claim of this article is that China has a dual-track governance strategy in non-REE critical minerals, focused less on one-off coercion than on durable order-shaping.
+\begin{itemize}
+    \item[] \textbf{Track 1 — governance-by-chokepoint:} In the first mode, Beijing makes use of precision export controls and licensing regimes to use midstream chokepoints as bargaining leverage. In thin value chains like gallium, germanium, and advanced graphite anode materials, China's production dominance becomes a form a structural power by way of technology controls, product-level specifications, and granular licensing. 
+    \item[] \textbf{Track 2 — governance-by-institution:} In the second mode, China creates institutional frameworks that it then diffuses to urge firms and partner governments into norms preferred by the PRC. BRI-era finance packages, CCCMC due-diligence guidance, Green BRI principles, MOFCOM–MEE environmental guidelines, and other related standards documents together make up a governance structure that is outward facing by design. These instruments use ESG language to build packaged contract design, permitting practices, and offtake arrangements, increasingly interacting with Western club goods like the Minerals Security Partnership (MSP) and Foreign Entity of Concern (FEOC) rules.
+\end{itemize}
+
+This article argues that it is the union of these two tracks, rather than either individually, that serves to transform China's role in this governance sphere. However, while I theorize the necessity of of both tracks, in this article, I focus empirically on Track 1 in order to show how coercion functions within the broader order. I argue that rather than acting as merely ad-hoc retaliation, export controls are the sharp edge of a much larger structural wedge. They highlight and create chokepoints, while the institutional context of Track 2 ensures that the resulting trade rerouting creates durable dependencies rather than simple evasion. 
+
+To do this, in \textbf{Section 2}, I first review the relevant literature on plural and overlapping orders, modes of geoeconomic and structural power, and soft law, situating the non-REE minerals domain within debates on alternative global orders and weaponized interdependence. This is followed by \textbf{Section 3}, which presents a explanation of the theoretical framework of dual-track governance, drawing on work of flexibility empowerment, structural power, and worlds of order to specify the mechanisms of each track and derive observable implications for trade rerouting, specification drift, offtake lock-in, and institutional feedbacks. 
+
+\textbf{Section 4} provides a detailed accounting of the event study of Chinese export controls on gallium, germanium, and graphite used to characterize China's actions within the Track 1 framework. The empirical findings from this work are presented in \textbf{Section 5}, showing the reconfiguration of trade patterns by export controls (Track 1) succeeds as it forces other countries into the institutional pathways defined by Track 2. I conclude in \textbf{Section 6}, exploring the implications for both IR theory and policy.
+
+\section{Literature Review}
+\subsection{From world order to material statecraft}
+While traditional frameworks of order have argued for single-hub models, recent work urges a move towards an environment of overlapping, issue-specific regimes. Johnston's debate on worlds of order posits that rather than pursuing an overarching hegemonic architecture, great powers tend to seek nested, domain-specific orders \cite{Johnston2019}. This view fits well with the minerals domain made up of the overlapping but distinct systems of trade, standards, export controls, and development finance. 
+
+Economy reinforces this in her account of China's alternative order, arguing that Beijing uses institutional bricolage from standards setting to development lending to avoid frontal confrontation while securing strategic advantages \cite{Economy2024}. Other authors complement this view of a blended Chinese power strategy, highlighting the deep pluralism in global order \cite{BuzanZhang2024}, the flexibility-empowerment nexus that enables rising powers to leverage informal club-like arrangements \cite{HeldtMahrenbach2018}, and the ability of states to shpe markes via rules, standards and chokepoints as a structural power \cite{Strange1996}. When taken together, these frameworks indicate a logic within the minerals regime where advantage comes not from monopolization alone but also a systemized approach to rules configuration exercised by embedding standards, export-licensing regimes, and concessional finance into the supply chain to create lock-in, veto points and path dependencies. This motivates an empirical inquiry into how China mixes rule-making and rule-exploiting in the non-REE critical mineral supply chain. 
+
+When taken together, these frameworks allow us to build a conception foundation for analyzing advantage accrual within the domain of mineral extraction and production. China achieves dominance through near monopoly on production paired delicately with rule configuration, working a preferred set of standards, licensing regimes, and concessional finance into the system of the supply chain. This body of research motivates empirical inquiry of China's blending of rule-making and rule-exploiting in non-REE supply chains.
+
+\subsection{Hardening soft law}
+A second area of research focuses on how soft-law instruments like ESG guidelines, standards, transparency regimes and investment principles now serve as a form of de facto governance in critical minerals.
+
+The cornerstone for firm-level risk management has long been the OECD's Due Diligence Guidance, and it has gradually been expanded beyond conflict minerals to encompass broader ESG and traceability expectations \cite{OECD2016}. The China Chamber of Commerce of Metals, Minerals and Chemicals (CCCMC) guidelines mirror this, adapting the template to firms and value chain realities relevant to China, signaling both autonomy as well as isomorphism in norm diffusion \cite{CCCMC2015}. 
+
+Standards often act as the central vector geoeconomic power. For most of the 20th and early 21st centuries, the U.S. dominated this game, but China appears to be taking steps to encroach on this hegemony \cite{ButheMattli2011}. In a concrete manifestation of this, China's Green BRI and the 2022 MOFCOM-MEE environmental guidelines align outward investment with ecological due diligence, community consultation, and host-country law \cite{MOFCOMMEE2022,ClientEarthGBRI}.
+
+In parallel, Western initiatives harden soft law into club goods. While OECD and CCCMC guidelines constrain themselves primarily to focusing on transparency and ESG aspects of governance, the Minerals Security Partnership — a coalition of 14 countries and the European Union working to secure supply chains for critical minerals — articulates an explicit intent to coordinate public finance and standards \cite{MSP2024}. The U.S. has started the process of codifying market access constraints through the relatively new and unique Foreign Entity of Concern (FEOC) rules, operationalizing geopolitical screening within clean energy tax credits \cite{TreasuryFEOC2024}. Technical assessments from the International Energy Agency (IEA) provide a synthesis of these governance moves with market structure, indicating that refining concentration rather than mining is the binding risk to supply chains \cite{IEAETP2023Vuln,IEAETP2023MMP}. 
+
+In practice, these soft-law instruments function primarily as sources of strategic legitimation and as reference points in contract and permitting disputes. Academic work has not suitably answered the question of how voluntary frameworks like Green-BRI and MOFCOM-MEE interact with binding subsidy and trade rules as well as with Western due diligence statutes to produce either standards convergence, mutual recognition, or competitive fragmentation. 
+
+\subsection{Concentration and chokepoints}
+A third set of scholarship is used as the quantitative baseline for assessing the structure of the global minerals market and indentifying the location of chokepoints. 
+
+There are three canonical sources for process-level baselines. 1) The IEA's Global Critical Minerals Outlook 2025 provides quantified demand trajectories and concentration metrics at each step in the process from mining to refining, allowing for documentation of persistent trends like China's dominance in lithium chemicals ($\sim 70 \%$ global output) and rising Indonesian primacy in nickel, even as ex-China refining projects grow from a low base \cite{IEA2025}. 2) The USGS Mineral Commodity Summaries and accompanying technical reports provide series that satisfy the requirements of being long-run, country-level, and process-level necessary to anchor any original indicator work \cite{USGSMCS2025,USGSOFR2024}. 3) Industry data, like Benchmark Mineral Intelligence, helps to clarify bottlenecks in the supply chain. For example, a Benchmark minerals report estimates that roughly $75 \%$ of the graphite anode supply chain sits in China, with strong lock-in effects for downstream cell makers \cite{BenchmarkGraphite}.
+
+\subsection{Weaponized interdependence and the mechanics of coercion}
+Previous reviews indicate that China increasingly uses export controls and licensing rules to translate industrial capacity into strategic leverage. To better understand the underlying mechanism of this leverage, this article draws on the theory of weaponized interdependence. While global economic networks were traditionally seen as a means to promote peace, Farrell and Newman argue that these networks naturally centralize into hub-and-spoke topologies \cite{FarrellNewman2019}. In this framework, if a state controls a key hub, it can exploit the panopticon effect to gather information or chokepoint effects to deny access. 
+
+The empirical record as to the effectiveness of chokepoint control is mixed. While the 2010 rare earth embargo would seem the perfect case study for this theory, early studies suggest that markets adapted quickly through a combination of substitution and diversification, which blunted any intended coercive impact \cite{Gholz2015}. In this manner, China's 2023 restrictions on gallium and germanium are framed as a test of reverse dependence and a probe of Western stockpile and substitution elasticities \cite{StimsonGg}. Other scholarship  on smart sanctions and export controls, however, argues for a more nuanced mechanism. Drezner suggests that rather than seeking broad economic collapse, targeted measures often seek to impose specific costs on adversaries \cite{Drezner2015}. 
+
+In the context of China, scholars point to Beijing's strategy of frictional costs, where granular licensing creates administrative uncertainty and thus degrades the competitiveness of an adversary without actually triggering a potentially detrimental full decoupling \cite{RiggsHiddenReach}. Given the small absolute tonnages, USGS characterizes the gallium/germanium value chains as thin, but note the high mission criticality, amplifying the impact of licensing frictions \cite{USGSOFR2024}. Beijing's move to require licenses for certain anode materials including graphite introduces a level of administrative uncertainty that can make it hard for non-Chinese offtakers even absent any outright denials \cite{CSISGraphite2023,CENGraphite}. 
+
+Critically for the analysis presented in this study, literature on economic statecraft highlights trade diversion as one of the primary responses to coercion. Work on sanction busters by Early shows that trade is never truly blocked, instead rerouting through "black knight" intermediaries and third-party spoilers seeking to capitalize on the arbitrage opportunity \cite{Early2015}. More recent empirical work by Sheng et al. that focuses specifically on the U.S.-China trade war demonstrates the strategy employed by Chinese exporters of moving down the quality ladder, diverting flows from Western markets to the Global South in order to evade tariffs and restrictions \cite{Sheng2023}. This body of work suggests that we should expect partner switching following export controls. Instead of stopping trade, granular controls reconfigure it through politically aligned or neutral intermediaries.
+
+\subsection{The institutional backdrop: Strategic bundling}
+While Beijing employs the Track 1 export controls as coercive levers, the resultant rerouting is only possibly due to a carefully maintained institutional context (Track 2). Studies of China's strategy for Belt and Road Initiative (BRI) investment projects indicate that the country has sought to create bundles of concessional finance, infrastructure contracts, and offtake agreements specifically designed to lock in resource flows \cite{AidDataPowerPlaybook}.
+
+These bundles act as de facto governance regimes. In the DRC, AidData and related governance studies indicate that infrastructure for minerals package deals, loan renegotiations and cancellations, and off balance sheet guarantees have led to more consolidated Chinese commercial control, all the while creating leverage over production schedules and offtake \cite{AidDataPeruDRC}. Likewise, in South America, there is significant cross-validated reportage and industry filings indicating that Chinese firms are scaling stakes across brine and hard-rock projects, pushing these projects forwards through joint-ventures (JVs) that blend capital, processing technology, and guaranteed offtake \cite{Reuters_2025_ChineseControl75Ni}. 
+
+Track 2 governance can be thought of as a safety valve of sorts for Chinese strategy. When Track 1 controls cut direct export access to Western adversaries, the Track 2 institutions ensure that this surplus capacity can be absorbed by and routed through friendly jurisdictions like Indonesia or newly aligned hubs in the Global South.
+
+\subsection{Synthesis and researcheable gaps}
+Across this set of literature, there are two primary unexplored gaps.
+
+The first is the controls-standards interface. How does granular export licensing for graphite or Ga/GaN precursors co-evolve with technical standards and product definitions? This has implications for the relocation of chokepoints from raw materials to intermediate specifications. 
+
+The second is the interaction between coercion and rerouting. Existing literature primarily examines the export controls of Track 1 and the BRI finance of Track 2 in isolation, and there is little research bridging the two, explaining how they work as a unified strategy. 
+
+This article helps address these gaps by analyzing how licensing regimes reconfigure global flows away from adversaries and into the specific "spokes" cultivated by Chinese statecraft.
+
+\section{Theoretical Approach}
+\subsection{Critical minerals as a world of order}
+I posit that China's non-REE minerals strategy is a dual-track governance marked by operation within a plural, domain-specific international order. Per Johnston's world of orders framework, contestation and compliance must be analyzed at the issue level rather than on a single, collapsed verdict on revisionism \cite{Johnston2019}. Following in this path, I treat critical minerals for semiconductors and clean energy as an institutional subdomain where we can see China acting as both rule-shaper through standards, guidance, and development finance and rule-exploiter through export licensing and domestic industrial policy. 
+
+The argument is further structured by two additional strands. First, deep pluralism implies that there exist multiple, non-disjoint governance logics with significant conditions of interdependence \cite{BuzanZhang2024}. In this kind of setting, rising powers like China seek instruments that maximize issue and governance flexibility in their favor \cite{HeldtMahrenbach2018}. Second, working off of Strange's framework, the center of geoeconomic influence in these supply chains is structural power over knowledge and production networks \cite{Strange1996}. Control over midstream processing, process know-how, and quality specifications is crucial to this power. Economy's account of an alternative order built from development finance, narrative legitimation, and technical standards provides the large-scale template that this project brings into the minerals domain \cite{Economy2024}. 
+
+When viewed together, these perspectives support the claim that non-REE critical minerals form world of order with distinct rules, players, and playbooks. Instead of abstractly arguing over whether China is a revisionist power or seeking to maintain the status-quo, the task at hand is to explain how Beijing uses export controls, designed standards, and finance plus offtake bundles to directly shape its existence within this subdomain. We can define a parameter space of control methods, which flexibility empowerment suggests Beijing will seek to keep as broad as possible to preserve optionality. Within this space, China charts paths that allow it to toggle between cooperation and pressure as circumstances demand. This instrument space, however, is constrained by the broader environment that it exists in. As deep pluralism implies, Chinese practices here do not simply replace Western frameworks. Rather, they coexist with and often intersect regimes like OECD due diligence, MSP, and FEOC screening. 
+
+Within this world of orders, critical minerals for semiconductors and clean energy are a particularly useful subdomain when it comes to inferring the set of methods employed by Beijing. The chains are thin and very specialized, so they are very susceptible to chokepoint politics, yet they are also subject to increasing layers of soft law, ESG guidance, and club-based coordination. The fact that the domain of non-REE critical minerals is both structurally vulnerable and institutionally dense means that they are optimal for observing China's blending of rule-making and rule-exploiting, and the country's use of material statecraft to shape this specific order rather than a single architecture across orders. 
+
+\subsection{Defining dual-track governance}
+\label{subsec:dualtrack}
+\paragraph{Core claim.}
+China uses a dual-track strategy in non-rare-earth minerals whereby 1) precision export controls convert midstream chokepoints into bargaining leverage, creating a form of governance-by-chokepoint \cite{RiggsHiddenReach,CSISGraphite2023,StimsonGg}, while 2) institutionalized outward engagement socializes other countries and firms to PRC-approved norms in sourcing, ESG, and contract design \cite{CCCMC2015,MOFCOMMEE2022,ClientEarthGBRI}. The union of these two tracks is a strategy focused on translating production dominance into durable order-shaping rather than episodic coercion. 
+
+I designate this configuration dual-track governance. Many states occasionally use export controls or issue ESG guidelines, but it is rare that the systematically employ both in concerted strategy. China employs these instruments in tandem to pursue a defined direction. One track capitalizes on discrete chokepoints to turn turns structural advantages in processing and technology into leverage. The other track builds and diffuses a set of institutional frameworks that yield normalization of Chinese roles and standards in the same chains.
+
+Dual-track governance builds on Strange's account of structural power \cite{Strange1996}. In thin, very specialized supply chains, China's control over production networks, technical knowledge, and quality specifications allow it to leverage markets without depending on visible, continuous coercion. While the mechanisms differ across the tracks, all are grounded in the logic that a small targeted intervention can have an out-sized effect as it works through existing concentrated structures.
+
+\paragraph{Track 1: export-control track (governance-by-chokepoint).} 
+The set of granular controls and licensing friction that China uses to transform midstream dominance into bargaining leverage define the first track. In analyzing this mode, we should understand export controls as tools of governance rather than simple bans. Beijing controls the ease of access for foreign firms to critical intermediate inputs such as gallium, germanium, and advanced graphite anode materials with a careful combination of licensing requirements, technology-transfer controls, and finely sliced product definitions.
+
+The specialized and critical nature of the gallium, germanium, and battery-grade graphite supply chains means that very small changes in licensing requirements or product definitions can create significant downstream adjustments. The governance effects of the methods on this track can be seen through three channels:
+\begin{itemize}
+    \item \textbf{Partner switching —} When facing licensing shocks, importers respond by either rerouting trade through intermediaries or by shifting marginal volumes to alternative suppliers. This then creates new dependencies on specific transit hubs and trading partners even if aggregate volumes stay the same. 
+    \item \textbf{Specification redefinition —} Chinese authorities can easily move chokepoints from raw materials to processed intermediates by tightening or reclassifying HS codes and technical specifications. Even if other countries develop basic extraction capacity, this specification creep allows China to preserve leverage.
+    \item \textbf{Administrative uncertainty —} Uncertainty can be created through delays, documentation demands, and discretionary enforcement. This allows China to structure bargaining, forcing firms and governments to adjust their investment plans and political positions to stay on the right side of relatively opaque licensing practices.
+\end{itemize}
+
+\paragraph{Track 2: institutional track (governance-by-institution).}
+The second track is institutional and outward-facing. In order to socialize norms and lock in flows, China uses a combination of joint ventures, BRI finance and policy guidelines like CCCMC due diligence, Green BRI principles, and MOFCOM–MEE environmental guidelines. Beijing is thus able to shape practices around permitting and contracting, push a narrow definition of responsible conduct, and structure risk allocation between host states, Chinese firms, and third parties.
+
+This governance by institution is built on the following:
+\begin{itemize}
+    \item \textbf{Financing bundle —} China bundles concessional and policy-directed finance with equity stakes, long-term offtake agreements, and occasionally requirements for downstream processing in China to shape the physical direction of mineral flow and the legal and institutional landscape to favor them in the creation of future contracts.
+    \item \textbf{Guidelines and soft-law templates —} CCCMC guidelines, Green BRI documents, and MOFCOM–MEE guidance build a unique framework specific to Chinese outbound investment, adapting ESG and due-diligence language but distinct in nature. While formally voluntary, this framework still provides reference points for use in disputes and serves as de-facto standards in the bureaucracy of the host state.
+    \item \textbf{Joint ventures and technology partnerships —} China has structured JVs, especially in the DRC and the Lithium Triangle, specifically to combining capital, process know-how, and midstream technology. This allows the JVs to act as a means of diffusing technical standards and business practices aligned with those of China, also serving to shape domestic politics of resource governance by creating local stakeholders that are invested in the success of the Chinese led model.
+\end{itemize}
+
+This set of methods allows for faster initial ramp up, as bundles help move projects more quickly from announcement to production, especially in contexts with limited state capacity. It also creates stickier flows to Chinese refineries, as long-dated offtake clauses and Chinese dominance of refining technology make it harder for host states or other buyers to move from mineral extraction to technology fabrication in a way that avoids Chinese chokepoints.  
+
+Employed in tandem, these two tracks allow China to embed leverage in both the material and institutional fabric of the non-REE critical mineral supply chain. Where governance-by-chokepoint constrains the options and costs available to foreign actors at critical nodes, governance-by-institution shapes the surrounding landscape of rules and expectations where those actors plan and negotiate. These mechanisms mean that the abstract ideas of structural power and worlds of order can be observed in trade data and contract structures.
+
+\subsection{Observable implications}
+Based on this framework, if China is employing a strategy of "Governance-by-Chokepoint" (Track 1) enabled by an institutional backdrop (Track 2), we should observe three specific patterns in the trade data:
+\textbf{1) Partner Switching (The Geopolitical Filter):} If, as hypothesized, licensing is used to reconfigure rather than block trade, shocks in export controls should not result in a uniform collapse of exports. Instead, we would expect to see a sharp divergence, where direct flows to adversary nations fall while exports to intermediary or politically aligned jurisdictions grow proportionally. Partner switching should be visible through increased shares through specific Southeast Asian or European countries, even if ultimate consumption remains elsewhere. While aggregate exports may remain non-trivially positive, the destination concentration should rise. 
+
+\textbf{2) Price Discrimination (Rent Extraction):} If China seeks leverage, they may allow continued access to dependent adversaries at coercive prices. This means that we should expect a sanctions premium, where the unit value (price per kg) of exports to the adversary bloc rises significantly higher that the price charges to non-aligned partners, reflecting the costs of administrative friction and indirect procurement.
+
+\textbf{3) Specification Creep (Value Chain Lock-in):} If controls are designed to enforce an industrial policy, we should see a marked compositional shift in the trade. Following the implementation of licensing, the hypothesis suggests that the the share of raw material exports (e.g., natural graphite) should collapse, while the share of processed intermediates (e.g., spherical graphite) should rise or remain stable, forcing foreign buyers to remain tethered to China's midstream refining capacity.
+
+\subsection{Alternative explanations}
+This framework of dual-track governance does not claim that ambitions to shape order drive all variation in Chinese behavior or supply-chain outcomes. Thus we must consider three alternative frameworks:
+\begin{itemize}
+    \item \textbf{Pure retaliation or coercion —} If export controls have no broader governance ambition and are interpreted as one-off retaliatory moves in response to U.S. or allied actions, we would expect to see short-lived controls, sharp level effects, and limited institutional follow through. 
+    \item \textbf{Pure resource scarcity —} If Chinese policies are driven entirely by domestic industrial upgrading and resource-security concerns, with any governance effects simply by-products, we should see export controls and finance bundles that are highly sensitive to domestic capacity and industrial policy cycles, but not linked systematically to any outward norm diffusion.
+    \item \textbf{Global demand shocks —} It is possible that declines in exports to a specific country are simply indicative of a broader macroeconomic slowdown or cooling demand in the semiconductor and EV sectors. If this were the case, we should see similar declines in non-restricted control commodities (such as aluminum or silicon) exported to the same destinations. A divergence between the "treated" mineral and the "placebo" commodity would rule out this market-based explanation.
+\end{itemize}
